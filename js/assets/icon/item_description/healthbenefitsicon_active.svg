@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="440px" height="354px" viewBox="0 0 440 354" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>healthbenefitsicon_active</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-59.000000, -118.000000)">
+            <g id="healthbenefitsicon_active" transform="translate(0.000000, -33.000000)">
+                <g transform="translate(51.433673, 151.262626)" id="Health-Benefits-Icon">
+                    <g transform="translate(2.082072, 0.063690)">
+                        <path d="M312.037359,0 C275.596045,0 244.528418,36.8221967 227.597553,69.4123797 C210.645236,36.8221967 178.832157,0 142.401569,0 C88.149865,0 44.1789555,48.5872662 44.1789555,108.498846 C44.1789555,110.477621 44.6187182,112.25375 44.7045255,114.202724 C44.6777107,115.019267 44.5436367,115.746407 44.5436367,116.56891 C44.5436367,125.687962 46.7746281,135.569916 50.5662409,145.964444 C52.1858548,150.839859 54.1862389,155.381505 56.3689637,159.863549 C56.5620302,160.25692 56.7550968,160.650291 56.9374375,161.043662 C58.5087848,164.083346 59.8709766,167.301836 61.6568423,170.132914 C107.14547,253.020931 227.206057,355.988963 227.597553,353.032502 C227.597553,353.032502 368.021299,238.466207 402.354969,151.108067 C407.245989,138.400995 409.889928,127.04092 409.889928,116.56891 C409.696862,113.839154 410.233158,108.498846 410.233158,108.498846 C410.227795,48.5872662 366.272974,0 312.037359,0 Z" id="Heart" fill="#6BAE44"></path>
+                        <path d="M6.18114988,181.515152 L163.963134,181.515152" id="Line" stroke="#4F524D" stroke-linecap="square"></path>
+                        <path d="M167.248903,179.7 L201.960939,100.884211" id="Line-2" stroke="#4F524D" stroke-linecap="square"></path>
+                        <path d="M258.762453,245.905263 L294.417928,178.426209" id="Line-2" stroke="#4F524D" stroke-linecap="square"></path>
+                        <path d="M205.116579,104.036842 L258.762453,245.905263" id="Line-3" stroke="#4F524D" stroke-linecap="square"></path>
+                        <path d="M293.47449,178.489899 L444.945194,178.489899" id="Line-13" stroke="#4F524D" stroke-linecap="square"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
