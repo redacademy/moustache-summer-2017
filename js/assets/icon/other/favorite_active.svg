@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="339px" height="330px" viewBox="0 0 339 330" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>favorite_active</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Artboard" transform="translate(-113.000000, -102.000000)" stroke="#CF2B3F" fill="#CF2B3F">
+            <g id="favorite_active" transform="translate(114.000000, 103.000000)">
+                <path d="M13.724325,141.940007 L163.76515,325.640276 C166.351625,328.808117 170.580975,328.764958 173.13375,325.640276 L323.16615,141.940007 L317.1844,149.794872 C326.0138,138.478687 332.340975,124.840569 335.23075,109.847271 C336.384975,103.848226 337,97.633387 337,91.2718092 C337,40.905722 298.927425,0.0690537615 251.95805,0.0690537615 C213.211475,0.0690537615 180.522475,27.8631928 170.26925,65.8686567 L166.73075,65.799603 C156.4691,27.7855073 123.7801,0 85.033525,0 C38.072575,0 0,40.8280365 0,91.2027555 C0,97.5643333 0.6066,103.77054 1.760825,109.769586 C4.6506,124.762884 10.977775,138.409633 19.8156,149.725818" id="favorite"></path>
+            </g>
+        </g>
+    </g>
+</svg>
