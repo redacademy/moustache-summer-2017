@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="255px" height="255px" viewBox="0 0 255 255" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>moreinfoicon_default</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="Artboard" transform="translate(-175.000000, -159.000000)">
+            <g id="moreinfoicon_default" transform="translate(99.000000, 96.000000)">
+                <g transform="translate(76.936937, 63.461538)">
+                    <g id="noun_713089" transform="translate(111.558559, 65.384615)">
+                        <g id="Group" transform="translate(2.122398, 2.519894)"></g>
+                    </g>
+                    <ellipse id="Oval" fill="#6BAE44" cx="126.945946" cy="126.923077" rx="126.945946" ry="126.923077"></ellipse>
+                    <path d="M142.448739,69.6153846 C142.448739,63.1538462 137.370901,57.8461538 130.908198,57.8461538 C124.445495,57.8461538 119.367658,63.1538462 119.367658,69.6153846 C119.367658,75.8461538 124.445495,81.1538462 130.908198,81.1538462 C137.370901,81.1538462 142.448739,75.8461538 142.448739,69.6153846 Z M139.90982,200 L139.90982,103.076923 L121.675766,103.076923 L121.675766,200 L139.90982,200 Z" id="i" fill="#4F524D"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

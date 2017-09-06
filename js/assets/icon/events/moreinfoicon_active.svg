@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>moreinfoicon_active</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-83.000000, -46.000000)">
+            <g id="moreinfoicon_active" transform="translate(83.000000, 46.000000)">
+                <g id="noun_713089" transform="translate(175.757576, 103.030303)">
+                    <g id="Group" transform="translate(3.343783, 3.970742)"></g>
+                </g>
+                <circle id="Oval" fill="#6BAE44" cx="200" cy="200" r="200"></circle>
+                <path d="M224.424242,109.69697 C224.424242,99.5151515 216.424242,91.1515152 206.242424,91.1515152 C196.060606,91.1515152 188.060606,99.5151515 188.060606,109.69697 C188.060606,119.515152 196.060606,127.878788 206.242424,127.878788 C216.424242,127.878788 224.424242,119.515152 224.424242,109.69697 Z M220.424242,315.151515 L220.424242,162.424242 L191.69697,162.424242 L191.69697,315.151515 L220.424242,315.151515 Z" id="i" fill="#4F524D"></path>
+            </g>
+        </g>
+    </g>
+</svg>
