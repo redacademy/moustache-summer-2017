@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { StatusBar } from 'react-native';
+
+import { Tabs } from './navigation/routes';
 
 export default class moustache extends Component {
     render() {
         return (
-            <View>
-                <Text>
-                    Welcome to Green Moustache!!
-                </Text>
-            </View>
+            <Tabs />
         );
     }
 }
