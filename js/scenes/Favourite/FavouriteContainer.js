@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Favourite from './Favourite'
+import { colors } from '../../config/styles';
 
 class FavouriteContainer extends Component {
-    static route = {
-        navigationBar: {
-            title: 'Favourite',
-        }
-    }
+    static navigationOptions = {
+        title: 'Favourites',
+        headerTintColor: 'white',
+        headerStyle: { backgroundColor: colors.lightGreen },
+    };
 
     componentDidMount() {
         // ADD DISPATCH FUNCTION HERE TO FETCH DATA
@@ -27,5 +28,5 @@ function mapStateToProps(state) {
         // ADD REDUX STATE HERE      
     }
 }
-  
-export default connect(mapStateToProps)(FavouriteContainer)
+
+export default connect(mapStateToProps)(FavouriteContainer);

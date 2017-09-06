@@ -24,8 +24,8 @@ GrowersContainer.propTypes = {}
 
 function mapStateToProps(state) {
     return {
-        // ADD REDUX STATE HERE        
+        // ADD REDUX STATE HERE 
     }
 }
-  
+
 export default connect(mapStateToProps)(GrowersContainer)

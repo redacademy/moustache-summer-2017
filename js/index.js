@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Provider } from 'react-redux'
+import { StatusBar } from 'react-native';
+
+import store from './redux/store';
+import { Tabs } from './navigation/routes';
 
 export default class moustache extends Component {
     render() {
         return (
-            <View>
-                <Text>
-                    Welcome to Green Moustache!!
-                </Text>
-            </View>
+            <Provider store={store}>
+                <Tabs />
+            </Provider>
         );
     }
 }
