@@ -7,7 +7,7 @@ export default class moustache extends Component {
             <View>
                 <Text>
                     Welcome to Green Moustache!!
-          </Text>
+                </Text>
             </View>
         );
     }
