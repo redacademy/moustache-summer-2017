@@ -1,19 +1,36 @@
 import React from 'react';
 
 import { StackNavigator, TabNavigator } from "react-navigation";
-import { Icon } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
 import { colors } from '../config/styles';
 
 import Home from '../scenes/Home/';
 import Learn from '../scenes/Learn/';
+import Events from '../scenes/Events/';
+import Favourite from '../scenes/Favourite/';
+import Growers from '../scenes/Growers/';
+import HealthBenefit from '../scenes/HealthBenefit/';
+import Menu from '../scenes/Menu/';
+import MenuCategoryList from '../scenes/MenuCategoryList/';
+import Product from '../scenes/Product/';
 
 export const homeStack = StackNavigator({
     Home: { screen: Home },
+    MenuCategoryList: { screen: MenuCategoryList },
+    Menu: { screen: Menu },
+    Product: { screen: Product }
 });
 
 export const learnStack = StackNavigator({
-    Learn: { screen: Learn }
+    Learn: { screen: Learn },
+    Events: { screen: Events },
+    HealthBenefit: { screen: HealthBenefit },
+    Growers: { screen: Growers },
+});
+
+export const favouritesStack = StackNavigator({
+    Favourites: { screen: Favourite }
 })
 
 export const Tabs = TabNavigator({
@@ -22,8 +39,13 @@ export const Tabs = TabNavigator({
         navigatorOptions: {
             tabBar: {
                 label: 'Home',
-            },
-            tabBarIcon: (<Icon style={{width: 50, height: 50}} source={require('../assets/icons/homeicon.svg')} />),
+                icon: ({ tintColor }) => {
+                    <Image
+                        source={require('../assets/icons/homeicon.png')}
+                        style={[styles.icon, { tintColor: tintColor }]}
+                    />;
+                },
+            }
         }
     },
     Learn: {
@@ -34,12 +56,27 @@ export const Tabs = TabNavigator({
             }
         }
     },
+    Favourites: {
+        screen: favouritesStack,
+        navigatorOptions: {
+            tabBar: {
+                label: 'Favourites',
+            }
+        }
+    },
 }, {
-    tabBarOptions: {
-        activeBackgroundColor: colors.grey,
-        inactiveBackgroundColor: colors.lightGreen,
-        inactiveTintColor: 'white',
-        activeTintColor: 'white',
-    }
+        tabBarOptions: {
+            activeBackgroundColor: colors.grey,
+            inactiveBackgroundColor: colors.lightGreen,
+            inactiveTintColor: 'white',
+            activeTintColor: 'white',
+        }
     }
 )
+
+const styles = StyleSheet.create({
+    icon: {
+        width: 100,
+        height: 100,
+    },
+});

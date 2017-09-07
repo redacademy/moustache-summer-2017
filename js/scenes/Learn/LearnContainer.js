@@ -1,21 +1,52 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { colors } from '../../config/styles';
-
-import Learn from './Learn';
+import CustomHeader from '../../components/Header/';
+import { learnTab } from '../../redux/modules/SegmentedComps';
+import Events from '../Events/';
+import HealthBenefits from '../HealthBenefit/';
+import Growers from '../Growers/';
 
 class LearnContainer extends Component {
-    static navigationOptions = {
-        title: 'Learn',
-        headerTintColor: 'white',
-        headerStyle: {backgroundColor: colors.lightGreen},
+    static navigationOptions = () => {
+        return {
+            header: (
+                <CustomHeader
+                    title={'Learn'}
+                    buttons={['Events', 'Health Benefits', 'Growers']}
+                    tabChange={learnTab}
+                />
+            )
+        }
     };
 
     render() {
-        return (
-            <Learn />
-        )
+        const selected = this.props.selectedTab;
+        if (selected === 0) {
+            return (
+                <Events />
+            )
+        } else if (selected === 1) {
+            return (
+                <HealthBenefits />
+            )
+        } else if (selected === 2) {
+            return (
+                <Growers />
+            )
+        }
     }
 }
 
-export default LearnContainer;
+LearnContainer.propTypes = {
+    selectedTab: PropTypes.number.isRequired,
+}
+
+function mapSateToProps(state) {
+    return {
+        selectedTab: state.segment.learnChoice
+    }
+}
+
+export default connect(mapSateToProps)(LearnContainer);

@@ -27,5 +27,5 @@ function mapStateToProps(state) {
         // ADD REDUX STATE HERE        
     }
 }
-  
+
 export default connect(mapStateToProps)(EventsContainer)
