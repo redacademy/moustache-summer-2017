@@ -15,7 +15,7 @@ const Onboarding = () => (
         <Swiper>
             <View style={styles.slide}>
                 <View>
-                    <Image 
+                    <Image
                         style={styles.image}
                         source={require('../../assets/icon/onboarding/graphics_explore.png')}
                     />
@@ -30,11 +30,11 @@ const Onboarding = () => (
 
             <View style={styles.slide}>
                 <View>
-                    <Image 
+                    <Image
                         style={styles.image}
                         source={require('../..//assets/icon/onboarding/graphics_learn.png')}
                     /></View>
-                <View style={styles.intro}>                        
+                <View style={styles.intro}>
                     <View>
                         <Text style={styles.text}>Learn</Text></View>
                     <View>

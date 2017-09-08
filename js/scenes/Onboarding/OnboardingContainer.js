@@ -34,30 +34,3 @@ function mapStateToProps(state) {
   }
   
 export default connect(mapStateToProps)(OnboardingContainer)
-
-// npm i react-native-swiper --save
-
-// componentDidMount() {
-    
-//       AsyncStorage.getItem('onboarding').then((val) => {
-    
-//         if (!val) {
-//           this.setState({ onboarding: 'pending' });
-//           AsyncStorage.setItem('onboarding', 'done').done();
-//         } else {
-//           this.setState({ onboarding: val });
-//         }
-    
-//       }).done();
-    
-//     }
-    
-//     render() {
-    
-//       switch (this.state.onboarding) {
-//         case 'pending': return (<Onboarding />);
-//         case 'done': return (<Home />);
-//         default: return (<Loading />);
-//       };
-    
-//     }

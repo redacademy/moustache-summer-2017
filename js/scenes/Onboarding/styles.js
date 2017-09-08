@@ -36,8 +36,6 @@ export const styles = StyleSheet.create({
         padding: 20,
     },
     button: {
-        // position: 'absolute',
-        // bottom: 0,
         alignItems: 'center',        
         paddingTop: 10,
         paddingBottom: 10,
@@ -47,8 +45,6 @@ export const styles = StyleSheet.create({
     },
     btn_text: {
         fontSize: 20,
-        // paddingTop: 5,
-        // paddingBottom: 5,
         fontWeight: 'bold',
         color: '#fff'
     }
