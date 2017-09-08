@@ -7,6 +7,7 @@ const cors = require('cors');
 =======
 const admin = require('./database/firebase');
 const schema = require('./api/schema');
+const cors = require('cors');
 
 const GQL_PORT = 4400;
 >>>>>>> fix merge conflicts in index
