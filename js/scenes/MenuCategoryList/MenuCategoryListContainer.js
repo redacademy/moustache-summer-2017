@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import MenuCategoryList from './MenuCategoryList'
+import { colors } from '../../config/styles';
+import MenuCategoryList from './MenuCategoryList';
 
 class MenuCategoryListContainer extends Component {
-    static route = {
-        navigationBar: {
-          title: 'MenuCategoryList',
-            // TODO: CONDITIONALLY RENDER TITLE BASE ON SELECTED CATEGORY
-        }
-    }
+
+    static navigationOptions = {
+        title: 'Menu Category',
+        headerTintColor: 'white',
+        headerStyle: { backgroundColor: colors.lightGreen },
+    };
 
     componentDidMount() {
         // ADD DISPATCH FUNCTION HERE TO FETCH DATA
@@ -29,5 +30,5 @@ function mapStateToProps(state) {
         // ADD REDUX STATE HERE      
     };
 }
-  
+
 export default connect(mapStateToProps)(MenuCategoryListContainer)

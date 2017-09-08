@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation';
 
 import { styles } from './styles'
 
-const MenuCategoryList = ({ navigation }) => (
+const Featured = ({ navigation }) => (
     <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.navigate('Product')}>
             <Text> Take me to a product! </Text>
@@ -13,12 +13,12 @@ const MenuCategoryList = ({ navigation }) => (
     </View>
 )
 
-MenuCategoryList.propTypes = {
+Featured.propTypes = {
     navigation: PropTypes.shape({
         navigate: PropTypes.func,
     }).isRequired
 }
 
-const MenuCategoryListWithNavigation = withNavigation(MenuCategoryList);
+const FeaturedWithNavigation = withNavigation(Featured);
 
-export default MenuCategoryListWithNavigation;
+export default FeaturedWithNavigation;
