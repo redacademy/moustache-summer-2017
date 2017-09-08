@@ -1,6 +1,7 @@
 // Dependencies
+const express = require('express');
 const firebase = require('firebase')
-var config = require('./firebase.json')
+const config = require('./firebase.json')
 
 // Security setup for Firebase/RealtimeDatabase/Rules
 // {

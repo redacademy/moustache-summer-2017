@@ -7,7 +7,13 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"apollo-server-express": "^1.1.2",
+		"cors": "^2.8.4",
+		"express": "^4.15.4",
+		"firebase": "^4.3.1",
 		"firebase-admin": "^5.2.1",
+		"graphql": "^0.11.3",
+		"graphql-server-express": "^1.1.2",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.48.1",
 		"react-native-swiper": "^1.5.11"
