@@ -1,5 +1,4 @@
 // Dependencies
-const express = require('express');
 const firebase = require('firebase')
 const config = require('./firebase.json')
 
@@ -25,19 +24,29 @@ exports.getEvents = () => {
 }
 
 exports.getEvent = (id) => {
-  return ref.child('Events')
+  return ref
+    .child('Events')
+    .child(id)
     .once('value')
     .then((snapshot) => {
-      const data = {
-        'id': 0,
-        'name': 'xxx'
-      }
+      const data = snapshot.val()
       return data
     })
 }
 
 exports.getHealthBenefits = () => {
   return ref.child('HealthBenefits').once('value')
+    .then((snapshot) => {
+      const data = snapshot.val()
+      return data
+    })
+}
+
+exports.getHealthBenefit = (id) => {
+  return ref
+    .child('HealthBenefits')
+    .child(id)
+    .once('value')
     .then((snapshot) => {
       const data = snapshot.val()
       return data
@@ -62,6 +71,17 @@ exports.getMenuCat = () => {
 
 exports.getMenuItems = () => {
   return ref.child('MenuItems').once('value')
+    .then((snapshot) => {
+      const data = snapshot.val()
+      return data
+    })
+}
+
+exports.getMenuItem = (id) => {
+  return ref
+    .child('MenuItems')
+    .child(id)
+    .once('value')
     .then((snapshot) => {
       const data = snapshot.val()
       return data
