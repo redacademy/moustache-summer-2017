@@ -1,6 +1,6 @@
 // import firebase queries from '../database/[name]'
 
-const resolveFunctions = {
+const resolverFunctions = {
     Query: {
         menuCategories: () => {
 
@@ -29,4 +29,4 @@ const resolveFunctions = {
     }
 }
 
-export default resolveFunctions;
+module.exports = resolverFunctions;

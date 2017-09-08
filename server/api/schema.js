@@ -1,5 +1,6 @@
-// import { makeExecutableSchema } from 'graphql-tools';
-// import resolvers from './resolvers';
+
+const { makeExecutableSchema } = require('graphql-tools');
+const resolvers = require('./resolvers');
 
 const typeDefs = `
     type MenuCat {
@@ -57,7 +58,6 @@ const typeDefs = `
     }
 `
 
-// export default makeExecutableSchema({
-//     typeDefs,
-//     resolvers
-// });
+const schema = makeExecutableSchema({typeDefs, resolvers});
+
+module.exports = schema;
