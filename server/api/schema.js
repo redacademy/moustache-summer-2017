@@ -1,5 +1,5 @@
-import { makeExecutableSchema } from 'graphql-tools';
-import resolvers from './resolvers';
+// import { makeExecutableSchema } from 'graphql-tools';
+// import resolvers from './resolvers';
 
 const typeDefs = `
     type MenuCat {
@@ -57,7 +57,7 @@ const typeDefs = `
     }
 `
 
-export default makeExecutableSchema({
-    typeDefs,
-    resolvers
-});
+// export default makeExecutableSchema({
+//     typeDefs,
+//     resolvers
+// });
