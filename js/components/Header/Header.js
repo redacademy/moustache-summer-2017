@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 
 import { styles } from './styles';
 
-
-
 const CustomHeader = ({ title, buttons, selectedTab, dispatch, learnTab, tabChange }) => (
 
     <View style={styles.header}>
