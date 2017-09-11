@@ -2,14 +2,6 @@
 const firebase = require('firebase')
 const config = require('./firebase.json')
 
-// Security setup for Firebase/RealtimeDatabase/Rules
-// {
-//   "rules": {
-//     ".read": "true",
-//     ".write": "auth != null"
-//   }
-// }
-
 // Helpers
 
 firebase.initializeApp(config);

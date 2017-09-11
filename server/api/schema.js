@@ -5,13 +5,14 @@ const typeDefs = `
     type MenuCat {
         id: ID!
         name: String!
+        iconLink: String!
     }
 
     type MenuItem {
         id: ID!
         category: String!
         name: String!
-        ingredients: String!
+        ingredients: String
         price: String!
         similarItems: String!
         healthBenefits: String!
@@ -49,7 +50,7 @@ const typeDefs = `
         menuCategories: [MenuCat]
         menuItems: [MenuItem]
         menuItem(id: ID!): MenuItem
-        events: [event]
+        events: [Event]
         event(id: ID!): Event
         growers: [Grower]
         healthBenefits: [HealthBenefit]

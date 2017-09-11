@@ -11,7 +11,7 @@ const GQL_PORT = 4400;
 const rest = require('./apirest/rest');
 
 // App
-const app = express()
+const app = express();
 
 app.use('*', cors());
 
@@ -26,7 +26,6 @@ app.use('/graphiql', graphiqlExpress({
 }));
 
 // Run
-
 app.listen(GQL_PORT, () => console.log(
     `GraphQL is now running localhost:${GQL_PORT}/graphql`
 ));

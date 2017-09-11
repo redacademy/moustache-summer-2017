@@ -1,30 +1,30 @@
-// import firebase queries from '../database/[name]'
+const queries = require('../firebase/fbqueries');
 
 const resolveFunctions = {
     Query: {
         menuCategories: () => {
-
+            return queries.getMenuCat();
         },
         menuItems: () => {
-
+            return queries.getMenuItems();
         },
-        menuItem: () => {
-
+        menuItem: (root, { id }) => {
+            return queries.getMenuItem(id);
         },
         events: () => {
-
+            return queries.getEvents();
         },
-        event: () => {
-
+        event: (root, { id }) => {
+            return queries.getEvent(id);
         },
         growers: () => {
-
+            return queries.getGrowers();
         },
         healthBenefits: () => {
-
+            return queries.getHealthBenefits();
         },
-        healthBenefit: () => {
-
+        healthBenefit: (root, { id }) => {
+            return queries.getHealthBenefit(id);
         }
     }
 }
