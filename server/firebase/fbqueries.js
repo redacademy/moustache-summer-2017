@@ -21,7 +21,8 @@ exports.getEvent = (id) => {
     .child(id)
     .once('value')
     .then((snapshot) => {
-      const data = snapshot.val()
+      let data = snapshot.val()
+      data.id = snapshot.key
       return data
     })
 }
