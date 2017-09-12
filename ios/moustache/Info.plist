@@ -63,6 +63,16 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Verlag-Black.ttf</string>
+		<string>Verlag-BlackItalic.ttf</string>
+		<string>Verlag-Bold.ttf</string>
+		<string>Verlag-BoldItalic.ttf</string>
+		<string>Verlag-Book.ttf</string>
+		<string>Verlag-BookItalic.ttf</string>
+		<string>Verlag-Light.ttf</string>
+		<string>Verlag-LightItalic.ttf</string>
+		<string>Verlag-XLight.ttf</string>
+		<string>Verlag-XLightItalic.ttf</string>
 	</array>
 </dict>
 </plist>
