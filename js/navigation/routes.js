@@ -14,6 +14,8 @@ import HealthBenefit from '../scenes/HealthBenefit/';
 import Menu from '../scenes/Menu/';
 import MenuCategoryList from '../scenes/MenuCategoryList/';
 import Product from '../scenes/Product/';
+import Ingredient from '../scenes/Ingredient/';
+import SingleEvent from '../scenes/SingleEvent/';
 
 export const homeStack = StackNavigator({
     Home: { screen: Home },
@@ -27,6 +29,8 @@ export const learnStack = StackNavigator({
     Events: { screen: Events },
     HealthBenefit: { screen: HealthBenefit },
     Growers: { screen: Growers },
+    Ingredient: { screen: Ingredient },
+    SingleEvent: { screen: SingleEvent }
 });
 
 export const favouritesStack = StackNavigator({

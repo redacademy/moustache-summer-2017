@@ -3,10 +3,10 @@ import { View, Text } from 'react-native';
 
 import { styles } from './styles';
 
-const Home = () => (
+const Ingredient = () => (
     <View>
-        <Text>This is Home!</Text>
+        <Text>I am an ingredient!</Text>
     </View>
 )
 
-export default Home;
+export default Ingredient;
