@@ -5,8 +5,21 @@ This native mobile application allows users to make orders with The Green Mousta
 
 This project is a part of the community partner program at RED Academy (https://redacademy.com/submit-a-project/).
 
+## Configuration
+### Firebase
+Include these rules to set up the Firebase database:
+
+```
+{
+  "rules": {
+    ".read": "true",
+    ".write": "auth != null"
+  }
+}
+```
+
 ## Authors
-Brian Lau (https://github.com/wtLau)
-Kat Solberg (https://github.com/kmsolberg)
-Jess Dieuique (https://github.com/jesstice)
-Plinio Prado (https://github.com/plinioprado)
+- Brian Lau (https://github.com/wtLau)
+- Kat Solberg (https://github.com/kmsolberg)
+- Jess Dieuique (https://github.com/jesstice)
+- Plinio Prado (https://github.com/plinioprado)
