@@ -8,7 +8,7 @@ import { styles } from './styles';
 const HeartIconActive = () => (
     <Image
         style={styles.heart}
-        source={require('../../assets/icon/others/favorite_active.png')}
+        source={require('../../assets/icons/other/favorite_active.png')}
     />
 );
 

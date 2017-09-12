@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {
     Text,
     View,
@@ -17,7 +16,7 @@ const Onboarding = () => (
                 <View>
                     <Image
                         style={styles.image}
-                        source={require('../../assets/icon/onboarding/graphics_explore.png')}
+                        source={require('../../assets/icons/onboarding/graphics_explore.png')}
                     />
                 </View>
                 <View style={styles.intro}>
@@ -32,7 +31,7 @@ const Onboarding = () => (
                 <View>
                     <Image
                         style={styles.image}
-                        source={require('../..//assets/icon/onboarding/graphics_learn.png')}
+                        source={require('../..//assets/icons/onboarding/graphics_learn.png')}
                     /></View>
                 <View style={styles.intro}>
                     <View>
@@ -49,8 +48,5 @@ const Onboarding = () => (
         </Swiper>
     </View>
 )
-
-Onboarding.propTypes = {}
-
 
 export default Onboarding

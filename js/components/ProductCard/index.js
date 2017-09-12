@@ -1,3 +1,3 @@
-import FavProductCard from './FavProductCard';
+import ProductCard from './ProductCard';
 
-export default FavProductCard;
+export default ProductCard;

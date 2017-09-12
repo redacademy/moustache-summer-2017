@@ -1,15 +1,14 @@
 import { StyleSheet } from 'react-native';
+import { colors, typography } from '../../config/styles';
 
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		flexDirection: 'row',
-		flexWrap: 'wrap',
 		backgroundColor: '#ffff',
-		paddingTop: 30,
+		height: 175,
 	},
 	wrapper: {
-		height: '33%',
+		height: '100%',
 		width: '100%',
 		overflow: 'hidden',
 		position: 'relative',
@@ -20,13 +19,21 @@ export const styles = StyleSheet.create({
 		resizeMode: 'cover',
 		zIndex: 1,
 	},
+	arrow: {
+		fontSize: typography.size22,
+		color: colors.grey,
+		zIndex: 1,
+		right: 15,
+		backgroundColor: 'transparent',
+		position: 'absolute'
+	},
 	btn_heart: {
-		right: 10,
+		right: 50,
 		position: 'absolute'
 	},
 	heart: {
-		height: 25,
-		width: 24,
+		height: 20,
+		width: 19,
 		resizeMode: 'contain',
 	},
 	box: {
@@ -39,10 +46,18 @@ export const styles = StyleSheet.create({
 	},
 	text: {
 		backgroundColor: 'transparent',
-		marginLeft: 10
+		marginLeft: 20,
+		paddingTop: 5,
+		fontSize: typography.size17,
+		fontFamily: typography.fontBook,
+		fontWeight: 'bold',
+		color: colors.grey
 	},
 	price: {
 		backgroundColor: 'transparent',
-		marginLeft: 10
+		marginLeft: 20,
+		fontSize: typography.size17,
+		fontFamily: typography.fontBook,
+		color: colors.grey
 	}
 });

@@ -39,9 +39,8 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSAppTransportSecurity</key>
-	<!--See http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/ -->
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
@@ -52,5 +51,28 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Zocial.ttf</string>
+		<string>Verlag-Black.ttf</string>
+		<string>Verlag-BlackItalic.ttf</string>
+		<string>Verlag-Bold.ttf</string>
+		<string>Verlag-BoldItalic.ttf</string>
+		<string>Verlag-Book.ttf</string>
+		<string>Verlag-BookItalic.ttf</string>
+		<string>Verlag-Light.ttf</string>
+		<string>Verlag-LightItalic.ttf</string>
+		<string>Verlag-XLight.ttf</string>
+		<string>Verlag-XLightItalic.ttf</string>
+	</array>
 </dict>
 </plist>

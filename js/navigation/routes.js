@@ -43,12 +43,11 @@ export const Tabs = TabNavigator({
         navigatorOptions: {
             tabBar: {
                 label: 'Home',
-                icon: ({ tintColor }) => {
-                    <Image
-                        source={require('../assets/icons/homeicon.png')}
-                        style={[styles.icon, { tintColor: tintColor }]}
-                    />;
-                },
+                // icon: ({ tintColor }) => {
+                //     <Image
+                //         style={[styles.icon, { tintColor: tintColor }]}
+                //     />;
+                // },
             }
         }
     },
