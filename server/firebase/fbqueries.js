@@ -29,7 +29,8 @@ exports.getEvent = (id) => {
     .child(id)
     .once('value')
     .then((snapshot) => {
-      const data = snapshot.val()
+      let data = snapshot.val()
+      data.id = snapshot.key
       return data
     })
 }
@@ -37,7 +38,8 @@ exports.getEvent = (id) => {
 exports.getHealthBenefits = () => {
   return ref.child('HealthBenefits').once('value')
     .then((snapshot) => {
-      const data = snapshot.val()
+      let data = snapshot.val()
+      data.id = snapshot.key
       return data
     })
 }
@@ -48,7 +50,8 @@ exports.getHealthBenefit = (id) => {
     .child(id)
     .once('value')
     .then((snapshot) => {
-      const data = snapshot.val()
+      let data = snapshot.val()
+      data.id = snapshot.key
       return data
     })
 }
@@ -56,7 +59,8 @@ exports.getHealthBenefit = (id) => {
 exports.getGrowers = () => {
   return ref.child('Growers').once('value')
     .then((snapshot) => {
-      const data = snapshot.val()
+      let data = snapshot.val()
+      data.id = snapshot.key
       return data
     })
 }
@@ -64,7 +68,8 @@ exports.getGrowers = () => {
 exports.getMenuCat = () => {
   return ref.child('MenuCat').once('value')
     .then((snapshot) => {
-      const data = snapshot.val()
+      let data = snapshot.val()
+      data.id = snapshot.key
       return data
     })
 }
@@ -72,7 +77,8 @@ exports.getMenuCat = () => {
 exports.getMenuItems = () => {
   return ref.child('MenuItems').once('value')
     .then((snapshot) => {
-      const data = snapshot.val()
+      let data = snapshot.val()
+      data.id = snapshot.key
       return data
     })
 }
@@ -83,7 +89,8 @@ exports.getMenuItem = (id) => {
     .child(id)
     .once('value')
     .then((snapshot) => {
-      const data = snapshot.val()
+      let data = snapshot.val()
+      data.id = snapshot.key
       return data
     })
 }
