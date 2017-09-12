@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation';
 
 import { styles } from './styles'
 
-const Events = ({ navigation }) => (
+const Events = ({ navigation, eventsList }) => (
     <View style={styles.container}>
         <Text>This is Events scene</Text>
         <TouchableOpacity onPress={() => navigation.navigate('SingleEvent')}>
@@ -17,7 +17,20 @@ const Events = ({ navigation }) => (
 Events.propTypes = {
     navigation: PropTypes.shape({
         navigate: PropTypes.func,
-    }).isRequired
+    }).isRequired,
+    eventsList: PropTypes.arrayOf(
+        PropTypes.shape({
+            __typename: PropTypes.string,
+            name: PropTypes.string,
+            date: PropTypes.string,
+            timeStart: PropTypes.string,
+            timeEnd: PropTypes.string,
+            location: PropTypes.string,
+            imageLink: PropTypes.string,
+            eventLink: PropTypes.string,
+            details: PropTypes.string
+        })
+    )
 }
 
 const EventsWithNavigation = withNavigation(Events)
