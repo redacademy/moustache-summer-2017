@@ -9,35 +9,35 @@ import { styles } from './styles'
 const list = [
     {
         title: 'Breakfast',
-        icon: require('../../assets/icon/menu/breakfasticon.png')
+        icon: require('../../assets/icons/menu/breakfasticon.png')
     },
     {
         title: 'Nutritious Food',
-        icon: require('../../assets/icon/menu/nutritiousfoodicon.png')
+        icon: require('../../assets/icons/menu/nutritiousfoodicon.png')
     },
     {
         title: 'Beverages',
-        icon: require('../../assets/icon/menu/beveragesicon.png')
+        icon: require('../../assets/icons/menu/beveragesicon.png')
     },
     {
         title: 'Juices',
-        icon: require('../../assets/icon/menu/juicesicon.png')
+        icon: require('../../assets/icons/menu/juicesicon.png')
     },
     {
         title: 'Daily Shots',
-        icon: require('../../assets/icon/menu/dailyshotsicon.png')
+        icon: require('../../assets/icons/menu/dailyshotsicon.png')
     },
     {
         title: 'Smoothies',
-        icon: require('../../assets/icon/menu/smoothiesicon.png')
+        icon: require('../../assets/icons/menu/smoothiesicon.png')
     },
     {
         title: 'Kids Menu',
-        icon: require('../../assets/icon/menu/kidsmenuicon.png')
+        icon: require('../../assets/icons/menu/kidsmenuicon.png')
     },
     {
         title: 'Raw Dessert',
-        icon: require('../../assets/icon/menu/rawdesserticon.png')
+        icon: require('../../assets/icons/menu/rawdesserticon.png')
     },
 ]
 
