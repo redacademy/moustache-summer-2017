@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: '#ffff',
 		height: 175,
+		borderBottomWidth: 1.5,
+		borderColor: colors.lightGreen
 	},
 	wrapper: {
 		height: '100%',

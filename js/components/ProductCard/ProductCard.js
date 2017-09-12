@@ -11,7 +11,7 @@ import HeartIconActive from '../HeartIconActive/';
 import Icon from 'react-native-vector-icons/Entypo';
 import { styles } from './styles';
 
-const ProductCard = () => (
+const ProductCard = ({ arrowStyle, heartStyle }) => (
     <View style={styles.container}>
         <View style={styles.wrapper}>
             <Image
@@ -24,10 +24,10 @@ const ProductCard = () => (
                     <Text style={styles.text}>Buddha Bowl</Text>
                     <Text style={styles.price}>11.95</Text>
                 </View>
-                <TouchableOpacity style={styles.btn_heart} onPress={this.toggleDescription}>
-                    <HeartIconActive />
+                <TouchableOpacity style={[styles.btn_heart, heartStyle]} onPress={this.toggleDescription}>
+                    <HeartIconActive/>
                 </TouchableOpacity>
-                <Icon style={styles.arrow} name="chevron-thin-right" />
+                <Icon style={[styles.arrow, arrowStyle]} name="chevron-thin-right" />
             </View>
         </View>
     </View>
