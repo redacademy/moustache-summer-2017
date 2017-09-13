@@ -8,6 +8,9 @@ const resolveFunctions = {
         menuItems: () => {
             return queries.getMenuItems();
         },
+        featuredItems: () => {
+            return queries.getFeaturedItems();
+        },
         menuItem: (root, { id }) => {
             return queries.getMenuItem(id);
         },

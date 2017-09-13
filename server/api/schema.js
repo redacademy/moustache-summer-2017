@@ -11,9 +11,10 @@ const typeDefs = `
     type MenuItem {
         id: ID!
         category: String!
+        featured: Boolean!
         name: String!
         ingredients: String
-        price: String!
+        price: String
         similarItems: String!
         healthBenefits: String!
     }
@@ -49,6 +50,8 @@ const typeDefs = `
     type Query {
         menuCategories: [MenuCat]
         menuItems: [MenuItem]
+        menuItems: [MenuItem]
+        featuredItems: [MenuItem]
         menuItem(id: ID!): MenuItem
         events: [Event]
         event(id: ID!): Event

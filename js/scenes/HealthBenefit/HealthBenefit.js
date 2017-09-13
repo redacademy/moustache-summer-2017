@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation';
 
 import { styles } from './styles'
 
-const HealthBenefits = ({ navigation }) => (
+const HealthBenefits = ({ navigation, benefitsList }) => (
     <View style={styles.container}>
         <Text>This is HealthBenefits scene</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Ingredient')}>
@@ -17,7 +17,16 @@ const HealthBenefits = ({ navigation }) => (
 HealthBenefits.propTypes = {
     navigation: PropTypes.shape({
         navigate: PropTypes.func,
-    }).isRequired
+    }).isRequired,
+    benefitsList: PropTypes.arrayOf(
+        PropTypes.shape({
+            __typename: PropTypes.string,
+            details: PropTypes.string,
+            healthBenefits: PropTypes.string,
+            name: PropTypes.string,
+            whereInMenu: PropTypes.string
+        })
+    )
 }
 
 const HealthBenefitsWithNavigation = withNavigation(HealthBenefits)
