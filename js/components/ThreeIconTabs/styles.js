@@ -41,5 +41,12 @@ export const styles = StyleSheet.create({
 		height: 60,
 		overflow: 'visible',
 		paddingBottom: 5,
+	},
+	tabs: {
+		backgroundColor: 'white', 
+		padding: 0
+	},
+	indicator: {
+		backgroundColor: 'transparent',
 	}
 });
