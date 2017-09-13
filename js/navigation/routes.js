@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { StackNavigator, TabNavigator } from "react-navigation";
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, Icon } from 'react-native';
 
 import { colors } from '../config/styles';
 
@@ -37,34 +37,27 @@ export const favouritesStack = StackNavigator({
     Favourites: { screen: Favourite }
 })
 
+const homeIcon = require('../assets/icons/footer/homeicon.png');
+const learnIcon = require('../assets/icons/footer/bookicon.png');
+const favesIcon = require('../assets/icons/footer/favoriteicon.png');
+
 export const Tabs = TabNavigator({
     Home: {
         screen: homeStack,
-        navigatorOptions: {
-            tabBar: {
-                label: 'Home',
-                // icon: ({ tintColor }) => {
-                //     <Image
-                //         style={[styles.icon, { tintColor: tintColor }]}
-                //     />;
-                // },
-            }
+        navigationOptions: {
+            tabBarIcon: <Image source={homeIcon} style={{height: 20, width: 22, overflow: 'visible' }}/>,
         }
     },
     Learn: {
         screen: learnStack,
-        navigatorOptions: {
-            tabBar: {
-                label: 'Learn',
-            }
+        navigationOptions: {
+            tabBarIcon: <Image source={learnIcon} style={{height: 20, width: 25, overflow: 'visible' }}/>,
         }
     },
     Favourites: {
         screen: favouritesStack,
-        navigatorOptions: {
-            tabBar: {
-                label: 'Favourites',
-            }
+        navigationOptions: {
+            tabBarIcon: <Image source={favesIcon} style={{height: 20, width: 25, overflow: 'visible' }}/>,
         }
     },
 }, {
@@ -72,14 +65,7 @@ export const Tabs = TabNavigator({
             activeBackgroundColor: colors.grey,
             inactiveBackgroundColor: colors.lightGreen,
             inactiveTintColor: 'white',
-            activeTintColor: 'white',
+            activeTintColor: 'white'
         }
     }
 )
-
-const styles = StyleSheet.create({
-    icon: {
-        width: 100,
-        height: 100,
-    },
-});
