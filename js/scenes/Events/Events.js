@@ -2,15 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
-
+import ProductCard from '../../components/ProductCard/';
 import { styles } from './styles'
 
 const Events = ({ navigation, eventsList }) => (
     <View style={styles.container}>
-        <Text>This is Events scene</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('SingleEvent')}>
-            <Text> Take me to an event </Text>
-        </TouchableOpacity>
+    {
+        eventsList.map(event => (
+            <ProductCard 
+                key={event.name}
+                eventData={event}
+                heartStyle={{right: -100}}
+            />
+        ))
+    }
     </View>
 )
 

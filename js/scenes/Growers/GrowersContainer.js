@@ -13,14 +13,14 @@ class GrowersContainer extends Component {
         }
     }
 
+    state = {
+        error: null
+    }
+
     growerLink(url) {
         Linking.canOpenURL(url)
-            .then(supported => {
-                if (supported) {
-                    Linking.openURL(url);
-                } else {
-                    throw Error;
-                }
+            .catch(error => {
+                this.setState({ error })
             })
     }
 
@@ -32,6 +32,7 @@ class GrowersContainer extends Component {
             <Growers
                 growersList={growers}
                 growerLink={this.growerLink}
+                error={this.state.error}
             />
         )
     }

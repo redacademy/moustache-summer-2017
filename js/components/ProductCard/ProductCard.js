@@ -11,26 +11,35 @@ import HeartIconActive from '../HeartIconActive/';
 import Icon from 'react-native-vector-icons/Entypo';
 import { styles } from './styles';
 
-const ProductCard = ({ arrowStyle, heartStyle }) => (
+const ProductCard = ({ arrowStyle, heartStyle, eventData, menuItemData }) => (
     <View style={styles.container}>
         <View style={styles.wrapper}>
             <Image
                 style={styles.image}
-                source={require('../../assets/images/buddhabowl.png')}
+                source={{uri: eventData.imageLink}}
             />
             <View style={styles.box}>
                 <LinearGradientColor />
                 <View>
-                    <Text style={styles.text}>Buddha Bowl</Text>
-                    <Text style={styles.price}>11.95</Text>
+                    <Text style={styles.text}>{eventData.name}</Text>
+                    <Text style={styles.price}>{eventData.time}</Text>
                 </View>
-                <TouchableOpacity style={[styles.btn_heart, heartStyle]} onPress={this.toggleDescription}>
-                    <HeartIconActive/>
-                </TouchableOpacity>
+                {
+                    menuItemData ? 
+                        <TouchableOpacity style={[styles.btn_heart, heartStyle]} onPress={this.toggleDescription}>
+                            <HeartIconActive/>
+                        </TouchableOpacity>
+                    :
+                        null
+                }
                 <Icon style={[styles.arrow, arrowStyle]} name="chevron-thin-right" />
             </View>
         </View>
     </View>
 );
+
+ProductCard.PropTypes = {
+
+}
 
 export default ProductCard;

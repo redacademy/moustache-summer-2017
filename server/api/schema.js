@@ -17,6 +17,7 @@ const typeDefs = `
         price: String
         similarItems: String!
         healthBenefits: String!
+        imageLink: String!
     }
 
     type HealthBenefit {
@@ -25,6 +26,7 @@ const typeDefs = `
         details: String!
         healthBenefits: String!
         whereInMenu: String!
+        imageLink: String!
     }
 
     type Event {
