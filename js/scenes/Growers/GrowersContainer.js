@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import Growers from './Growers';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Linking } from 'react-native';
 
 class GrowersContainer extends Component {
     static route = {
@@ -13,8 +13,15 @@ class GrowersContainer extends Component {
         }
     }
 
-    componentDidMount() {
-        // ADD DISPATCH FUNCTION HERE TO FETCH DATA
+    state = {
+        error: null
+    }
+
+    growerLink(url) {
+        Linking.canOpenURL(url)
+            .catch(error => {
+                this.setState({ error })
+            })
     }
 
     render() {
@@ -24,6 +31,8 @@ class GrowersContainer extends Component {
         return (
             <Growers
                 growersList={growers}
+                growerLink={this.growerLink}
+                error={this.state.error}
             />
         )
     }
@@ -40,18 +49,14 @@ GrowersContainer.propTypes = {
                 websiteLink: PropTypes.string
             })
         )
-    })
-}
-
-function mapStateToProps(state) {
-    return {
-        // ADD REDUX STATE HERE 
-    }
+    }),
+    growerLink: PropTypes.func
 }
 
 const fetchGrowers = gql`
     query fetchGrowers {
         growers {
+            id
             name
             description
             logoLink
@@ -61,4 +66,4 @@ const fetchGrowers = gql`
 `
 
 const growersList = graphql(fetchGrowers)(GrowersContainer);
-export default connect(mapStateToProps)(growersList);
+export default growersList;

@@ -9,7 +9,7 @@ import { styles } from './styles';
 const Featured = ({ navigation }) => (
     <ScrollView>
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => navigation.navigate('Product')}>
+            {/* <TouchableOpacity onPress={() => navigation.navigate('Product')}>
                 <ProductCard />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Product')}>
@@ -17,7 +17,7 @@ const Featured = ({ navigation }) => (
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Product')}>
                 <ProductCard />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     </ScrollView>
 );
