@@ -11,7 +11,7 @@ import HeartIconActive from '../HeartIconActive/';
 import Icon from 'react-native-vector-icons/Entypo';
 import { styles } from './styles';
 
-const ProductCard = ({ arrowStyle, heartStyle, eventData, menuItemData }) => (
+const ProductCard = ({ renderArrow, heartStyle, eventData, menuItemData, ingredientData }) => (
     <View style={styles.container}>
         <View style={styles.wrapper}>
             <Image
@@ -20,10 +20,20 @@ const ProductCard = ({ arrowStyle, heartStyle, eventData, menuItemData }) => (
             />
             <View style={styles.box}>
                 <LinearGradientColor />
-                <View>
-                    <Text style={styles.text}>{eventData.name}</Text>
-                    <Text style={styles.price}>{eventData.time}</Text>
-                </View>
+                    <View>
+                        {
+                            menuItemData || ingredientData ?
+                                <Text style={styles.text}>{ menuItemData ? menuItemData.name : ingredientData.name}</Text>
+                            :
+                                <Text numberOfLines={1} ellipsizeMode={'tail'} style={styles.text}>{eventData.name}</Text>
+                        }
+                        {
+                            menuItemData || eventData ?
+                                <Text style={styles.price}>{ eventData ? eventData.date : menuItemData.price }</Text>
+                            :
+                                null
+                        }
+                    </View> 
                 {
                     menuItemData ? 
                         <TouchableOpacity style={[styles.btn_heart, heartStyle]} onPress={this.toggleDescription}>
@@ -32,7 +42,12 @@ const ProductCard = ({ arrowStyle, heartStyle, eventData, menuItemData }) => (
                     :
                         null
                 }
-                <Icon style={[styles.arrow, arrowStyle]} name="chevron-thin-right" />
+                {
+                    renderArrow ?
+                        <Icon style={styles.arrow} name="chevron-thin-right" />
+                    :
+                        null
+                }
             </View>
         </View>
     </View>

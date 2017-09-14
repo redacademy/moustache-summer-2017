@@ -1,22 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import ProductCard from '../../components/ProductCard/';
 import { styles } from './styles'
 
 const Events = ({ navigation, eventsList }) => (
-    <View style={styles.container}>
-    {
-        eventsList.map(event => (
-            <ProductCard 
-                key={event.name}
-                eventData={event}
-                heartStyle={{right: -100}}
-            />
-        ))
-    }
-    </View>
+    <ScrollView>
+        <View style={styles.container}>
+        {
+            eventsList.map(event => (
+                <TouchableOpacity key={event.name} onPress={() => navigation.navigate('SingleEvent')}>
+                    <ProductCard 
+                        eventData={event}
+                        renderArrow
+                    />
+                </TouchableOpacity>
+            ))
+        }
+        </View>
+    </ScrollView>
 )
 
 Events.propTypes = {
