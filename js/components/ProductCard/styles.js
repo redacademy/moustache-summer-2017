@@ -50,7 +50,8 @@ export const styles = StyleSheet.create({
 		backgroundColor: 'transparent',
 		marginLeft: 20,
 		paddingTop: 5,
-		fontSize: typography.size17,
+		fontSize: 15.5,
+		paddingRight: 60,
 		fontFamily: typography.fontBook,
 		fontWeight: 'bold',
 		color: colors.grey
@@ -58,7 +59,7 @@ export const styles = StyleSheet.create({
 	price: {
 		backgroundColor: 'transparent',
 		marginLeft: 20,
-		fontSize: typography.size17,
+		fontSize: 15.5,
 		fontFamily: typography.fontBook,
 		color: colors.grey
 	}
