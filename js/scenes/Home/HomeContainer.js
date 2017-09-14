@@ -10,6 +10,8 @@ import { storeMenuItem } from '../../redux/modules/menuItems';
 import Featured from '../../components/Featured/';
 import Menu from '../Menu/';
 import CustomHeader from '../../components/Header/';
+import { homeTab } from '../../redux/modules/SegmentedComps';
+import { loadFaves } from '../../redux/modules/faves';
 
 class HomeContainer extends Component {
 
@@ -26,18 +28,32 @@ class HomeContainer extends Component {
         }
     }
 
+    addFaves = (list) => {
+        if (!list) return []
+        const faveList = this.props.faves
+        const newList = list.map(item => ({ ...item, fave: !!faveList.find(it => it.id == item.id) }));
+        return newList;
+    }
+
+    componentDidMount() {
+        this.props.dispatch(loadFaves())
+    }
+
+
     sendMenuItem = (item) => {
         return this.props.dispatch(storeMenuItem(item))
     }
 
     render() {
+
         const selected = this.props.selectedTab;
         const { data: { loading, featuredItems }, navigationState, dispatch } = this.props;
+        const itemsWithFaves = this.addFaves(menuItems)
 
         if (loading) return <ActivityIndicator />;
         return (
             <Featured
-                featuredItems={featuredItems}
+                featuredItems={itemsWithFaves}
                 navigation={
                     addNavigationHelpers({
                         dispatch: dispatch,
@@ -46,7 +62,6 @@ class HomeContainer extends Component {
                 }
                 sendMenuItem={this.sendMenuItem}
             />
-
         )
     }
 }
@@ -73,6 +88,11 @@ HomeContainer.propTypes = {
             price: PropTypes.string,
             similarItems: PropTypes.string,
             healthBenefits: PropTypes.string
+        })
+    ),
+    faves: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string
         })
     ),
 }

@@ -7,6 +7,7 @@ import MenuCategoryList from './MenuCategoryList';
 import CustomHeader from '../../components/Header/';
 import { storeMenuItem } from '../../redux/modules/menuItems';
 import { ActivityIndicator } from 'react-native';
+import { loadFaves } from '../../redux/modules/faves';
 
 class MenuCategoryListContainer extends Component {
 
@@ -24,6 +25,17 @@ class MenuCategoryListContainer extends Component {
         }
     }
 
+    componentWillMount() {
+        this.props.dispatch(loadFaves())
+    }
+
+    addFaves = (list) => {
+        if (!list) return []
+        const faveList = this.props.faves
+        const newList = list.map(item => ({ ...item, fave: !!faveList.find(it => it.id == item.id)}));
+        return newList;
+    }
+
     filterMenuItems = (menuItems, category) => {
         return menuItems.filter(item => item.category === category);
     }
@@ -35,11 +47,12 @@ class MenuCategoryListContainer extends Component {
     render() {
         const { data: { loading, menuItems } } = this.props;
         const category = this.props.menuCategory;
+        const itemsWithFaves = this.addFaves(menuItems)
 
         if (loading) return <ActivityIndicator />;
         return (
             <MenuCategoryList
-                menuItemsList={this.filterMenuItems(menuItems, category)}
+                menuItemsList={this.filterMenuItems(itemsWithFaves, category)}
                 sendMenuItem={this.sendMenuItem}
             />
         )
@@ -49,6 +62,7 @@ class MenuCategoryListContainer extends Component {
 const fetchMenuItems = gql`
     query fetchMenuItems {
         menuItems {
+            id
             category
             name
             ingredients
@@ -62,7 +76,8 @@ const fetchMenuItems = gql`
 
 function mapStateToProps(state) {
     return {
-        menuCategory: state.menu.category
+        menuCategory: state.menu.category,
+        faves: state.faves.faves
     };
 }
 
@@ -72,6 +87,7 @@ MenuCategoryListContainer.propTypes = {
         menuItems: PropTypes.arrayOf(
             PropTypes.shape({
                 __typename: PropTypes.string,
+                id: PropTypes.string,
                 category: PropTypes.string,
                 name: PropTypes.string,
                 ingredients: PropTypes.string,
@@ -81,6 +97,11 @@ MenuCategoryListContainer.propTypes = {
             })
         )
     }).isRequired,
+    faves: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string
+        })
+    ),
     menuCategory: PropTypes.string,
     dispatch: PropTypes.func.isRequired
 }

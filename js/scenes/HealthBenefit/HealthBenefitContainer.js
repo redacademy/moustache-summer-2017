@@ -23,9 +23,23 @@ class HealthBenefitContainer extends Component {
         }
     };
 
+    convert = (list) => {
+        if (!list) return [];
+        let newList = [];
+        list.forEach(item => {
+            const key = item.name.trim().substring(0,1);
+            if (!newList[key])  {
+                newList[key] = [item];
+            } else {
+                newList[key].push(item);
+            }
+        })
+        return newList;
+    }
+
     render() {
         const { data: { loading, healthBenefits } } = this.props;
-
+        const alphaList = this.convert(healthBenefits)
         if (loading) return <ActivityIndicator />;
         return (
             <HealthBenefit
