@@ -22,6 +22,22 @@ class HealthBenefitContainer extends Component {
             )
         }
     };
+    convert = (list) => {
+        if (!list) return [];
+        let newList = [];
+        list.forEach(item => {
+            const key = item.name.trim().substring(0,1);
+            if (!newList[key])  {
+                console.log('new', item)
+                newList[key] = [item];
+            } else {
+                console.log('add', item)
+                newList[key].push(item);
+            }
+        })
+        console.log('newList', newList)
+        return newList;
+    }
 
     convert = (list) => {
         if (!list) return [];
