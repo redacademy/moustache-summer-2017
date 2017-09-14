@@ -5,7 +5,6 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
-
 import LinearGradientColor from '../LinearGradientColor/';
 import HeartIconActive from '../HeartIconActive/';
 import Icon from 'react-native-vector-icons/Entypo';
