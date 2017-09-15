@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
 		marginLeft: 20,
 		paddingTop: 5,
 		fontSize: 15.5,
-		paddingRight: 60,
+		paddingRight: 100,
 		fontFamily: typography.fontBook,
 		fontWeight: 'bold',
 		color: colors.grey

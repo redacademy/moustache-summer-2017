@@ -5,5 +5,9 @@ export const styles = StyleSheet.create({
         height: 37,
         width: 37,
         resizeMode: 'contain',
+    },
+    button: {
+        right: 50,
+		position: 'absolute'
     }
 });
