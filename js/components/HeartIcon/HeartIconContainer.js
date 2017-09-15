@@ -4,10 +4,7 @@ import HeartIcon from './HeartIcon';
 
 class HeartIconContainer extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { isFaved: this.props.isFaved }
-    }
+    state = { isFaved: this.props.isFaved }
 
     handleFavePress = () => {
         this.setState({isFaved: !this.state.isFaved })
