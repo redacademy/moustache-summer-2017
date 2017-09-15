@@ -11,7 +11,7 @@ const SingleEvent = ({ eventData, openLink }) => (
         <View style={styles.container}>
             <ProductCard eventData={eventData} />
             <ActionButton
-                url={"https://www.google.ca"}
+                url={eventData.eventLink}
                 action={openLink}
                 text={'Purchase Ticket'}
             />
