@@ -53,6 +53,7 @@ function mapStateToProps(state) {
 const fetchFeaturedItems = gql`
     query fetchFeaturedItems {
         featuredItems {
+            id
             category
             name
             featured
