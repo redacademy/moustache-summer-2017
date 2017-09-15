@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import SingleEvent from './SingleEvent';
-import { colors } from '../../config/styles';
 import CustomHeader from '../../components/Header/';
+import { Linking } from 'react-native';
 
 class SingleEventContainer extends Component {
 
@@ -20,12 +20,47 @@ class SingleEventContainer extends Component {
         }
     };
 
+    state = {
+        error: null
+    }
+
+    openLink(url) {
+        Linking.canOpenURL(url).then(supported => {
+            if (!supported) {
+                alert('Cannot open!')
+            } else {
+                return Linking.openURL(url);
+            }
+        }).catch(error => this.setState({ error }));
+    }
+
     render() {
         return (
-            <SingleEvent />
+            <SingleEvent
+                eventData={this.props.navigation.state.params}
+                openLink={this.openLink}
+            />
         )
     }
 }
+
+SingleEventContainer.propTypes = {
+    navigation: PropTypes.shape({
+        state: PropTypes.shape({
+            params: PropTypes.shape({
+                __typename: PropTypes.string,
+                name: PropTypes.string,
+                date: PropTypes.string,
+                timeStart: PropTypes.string,
+                timeEnd: PropTypes.string,
+                location: PropTypes.string,
+                imageLink: PropTypes.string,
+                eventLink: PropTypes.string,
+                details: PropTypes.string
+            })
+        })
+    })
+};
 
 export default SingleEventContainer;
 

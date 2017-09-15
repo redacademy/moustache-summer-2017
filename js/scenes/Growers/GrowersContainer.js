@@ -27,10 +27,13 @@ class GrowersContainer extends Component {
     }
 
     growerLink(url) {
-        Linking.canOpenURL(url)
-            .catch(error => {
-                this.setState({ error })
-            })
+        Linking.canOpenURL(url).then(supported => {
+            if (!supported) {
+                alert('Cannot open!')
+            } else {
+                return Linking.openURL(url);
+            }
+        }).catch(error => this.setState({ error }));
     }
 
     render() {

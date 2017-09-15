@@ -11,27 +11,35 @@ import HeartIcon from '../HeartIcon';
 import Icon from 'react-native-vector-icons/Entypo';
 import { styles } from './styles';
 
-const ProductCard = ({ renderArrow, heartStyle, eventData, menuItemData, ingredientData }) => (
+const ProductCard = ({ renderArrow, heartStyle, eventData, menuItemData, ingredientData, numberOfLines, ellipsizeMode }) => (
     <View style={styles.container}>
         <View style={styles.wrapper}>
-            <Image
-                style={styles.image}
-                source={eventData ? {uri: eventData.imageLink} : {uri: menuItemData.imageLink}}
-            />
+            {(() => {
+                switch (menuItemData || ingredientData || eventData) {
+                    case (eventData):
+                        return <Image style={styles.image} source={{ uri: eventData.imageLink }} />
+                    case (ingredientData):
+                        return <Image style={styles.image} source={{ uri: ingredientData.imageLink }} />
+                    case (menuItemData):
+                        return <Image style={styles.image} source={{ uri: menuItemData.imageLink }} />
+                    default:
+                        null
+                }
+            })()}
             <View style={styles.box}>
                 <LinearGradientColor />
-                    <View>
-                        {
-                            (menuItemData || ingredientData) ?
-                                <Text style={styles.text}>{ menuItemData ? menuItemData.name : ingredientData.name}</Text>
+                <View>
+                    {
+                        (menuItemData || ingredientData) ?
+                            <Text style={styles.text}>{menuItemData ? menuItemData.name : ingredientData.name}</Text>
                             :
-                                <Text numberOfLines={1} ellipsizeMode={'tail'} style={styles.text}>{eventData.name}</Text>
-                        }
-                        {
-                            (menuItemData || eventData) &&
-                                <Text style={styles.price}>{ eventData ? eventData.date : menuItemData.price }</Text>
-                        }
-                    </View> 
+                            <Text numberOfLines={numberOfLines} ellipsizeMode={ellipsizeMode} style={styles.text}>{eventData.name}</Text>
+                    }
+                    {
+                        (menuItemData || eventData) &&
+                        <Text style={styles.price}>{eventData ? eventData.date : menuItemData.price}</Text>
+                    }
+                </View>
                 {
                     menuItemData && // turn menuItemData to true to test
                     <HeartIcon
@@ -41,14 +49,14 @@ const ProductCard = ({ renderArrow, heartStyle, eventData, menuItemData, ingredi
                 }
                 {
                     renderArrow &&
-                        <Icon style={styles.arrow} name="chevron-thin-right" />
+                    <Icon style={styles.arrow} name="chevron-thin-right" />
                 }
             </View>
         </View>
     </View>
 );
 
-ProductCard.PropTypes = {
+ProductCard.propTypes = {
     renderArrow: PropTypes.bool,
     heartStyle: PropTypes.object,
     eventData: PropTypes.shape({
@@ -74,7 +82,13 @@ ProductCard.PropTypes = {
         healthBenefits: PropTypes.string,
         name: PropTypes.string,
         whereInMenu: PropTypes.string
+<<<<<<< HEAD
     })
+=======
+    }),
+    numberOfLines: PropTypes.number,
+    ellipsizeMode: PropTypes.string
+>>>>>>> finished single-event scene
 }
 
 export default ProductCard;
