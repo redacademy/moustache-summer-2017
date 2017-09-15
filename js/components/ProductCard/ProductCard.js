@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {
     Text,
     View,
-    Image,
-    TouchableOpacity
+    Image
 } from 'react-native';
 import LinearGradientColor from '../LinearGradientColor/';
-import HeartIconActive from '../HeartIconActive/';
+//import HeartIconActive from '../HeartIconActive';
+import HeartIcon from '../HeartIcon';
 import Icon from 'react-native-vector-icons/Entypo';
 import { styles } from './styles';
 
@@ -33,10 +33,11 @@ const ProductCard = ({ renderArrow, heartStyle, eventData, menuItemData, ingredi
                         }
                     </View> 
                 {
-                    menuItemData &&
-                        <TouchableOpacity style={[styles.btn_heart, heartStyle]} onPress={this.toggleDescription}>
-                            <HeartIconActive/>
-                        </TouchableOpacity>
+                    menuItemData && // turn menuItemData to true to test
+                    <HeartIcon
+                        itemId={'1'}
+                        isFaved={false}
+                    />
                 }
                 {
                     renderArrow &&
