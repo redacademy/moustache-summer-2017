@@ -12,21 +12,27 @@ class ProductContainer extends Component {
         headerStyle: { backgroundColor: colors.lightGreen },
     };
 
-    componentDidMount() {
-        // ADD DISPATCH FUNCTION HERE TO FETCH DATA
-    }
-
     render() {
-        return <Product />
+        return <Product item={this.props.item}/>
     }
 }
 
-ProductContainer.propTypes = {}
-
 function mapStateToProps(state) {
     return {
-        // ADD REDUX STATE HERE    
+        item: state.menu.menuItem
     }
+}
+
+ProductContainer.propTypes = {
+    item: PropTypes.shape({
+        __typename: PropTypes.string,
+        category: PropTypes.string,
+        name: PropTypes.string,
+        ingredients: PropTypes.string,
+        price: PropTypes.string,
+        similarItems: PropTypes.string,
+        healthBenefits: PropTypes.string
+    })
 }
 
 export default connect(mapStateToProps)(ProductContainer)

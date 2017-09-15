@@ -4,31 +4,64 @@ import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import MenuCategoryList from './MenuCategoryList';
+import CustomHeader from '../../components/Header/';
+import { storeMenuItem } from '../../redux/modules/menuItems';
 import { ActivityIndicator } from 'react-native';
-import { colors } from '../../config/styles';
 
 class MenuCategoryListContainer extends Component {
 
-    static navigationOptions = {
-        title: 'Menu Category',
-        headerTintColor: 'white',
-        headerStyle: { backgroundColor: colors.lightGreen },
-    };
+    static navigationOptions = ({ navigation, screenProps }) => {
+        return {
+            header: (
+                <CustomHeader
+                    title={navigation.state.routeName}
+                    buttons={['Menu', 'Featured']}
+                    //tabChange={homeTab}
+                />
+            )
+        }
+    }
 
-    componentDidMount() {
-        // ADD DISPATCH FUNCTION HERE TO FETCH DATA
+    filterMenuItems = (menuItems, category) => {
+        return menuItems.filter(item => item.category === category);
+    }
+
+    sendMenuItem = (item) => {
+        return this.props.dispatch(storeMenuItem(item));
     }
 
     render() {
         const { data: { loading, menuItems } } = this.props;
+        const category = this.props.menuCategory;
 
         if (loading) return <ActivityIndicator />;
         return (
             <MenuCategoryList
-                menuItemsList={menuItems}
+                menuItemsList={this.filterMenuItems(menuItems, category)}
+                sendMenuItem={this.sendMenuItem}
             />
         )
     }
+}
+
+const fetchMenuItems = gql`
+    query fetchMenuItems {
+        menuItems {
+            category
+            name
+            ingredients
+            price
+            similarItems
+            healthBenefits
+            imageLink
+        }
+    }
+`
+
+function mapStateToProps(state) {
+    return {
+        menuCategory: state.menu.category
+    };
 }
 
 MenuCategoryListContainer.propTypes = {
@@ -45,28 +78,10 @@ MenuCategoryListContainer.propTypes = {
                 healthBenefits: PropTypes.string
             })
         )
-    })
+    }).isRequired,
+    menuCategory: PropTypes.string,
+    dispatch: PropTypes.func.isRequired
 }
 
-function mapStateToProps(state) {
-    return {
-        // ADD REDUX STATE HERE
-    };
-}
-
-const fetchMenuItems = gql`
-    query fetchMenuItems {
-        menuItems {
-            id
-            category
-            name
-            ingredients
-            price
-            similarItems
-            healthBenefits
-        }
-    }
-`
-
-const menuItemsList = graphql(fetchMenuItems)(MenuCategoryListContainer);
-export default connect(mapStateToProps)(menuItemsList);
+const MenuCategoryWithData = graphql(fetchMenuItems)(MenuCategoryListContainer)
+export default connect(mapStateToProps)(MenuCategoryWithData);

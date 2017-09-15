@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, ScrollView, Image } from 'react-native';
+import { ScrollView, Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { List, ListItem } from 'react-native-elements';
 
@@ -41,7 +41,7 @@ const list = [
     },
 ]
 
-const Menu = ({ navigation }) => (
+const Menu = ({ navigation, sendCategory }) => (
     <ScrollView contentContainerStyle={styles.container}>
         <List containerStyle={styles.list}>
             {list.map((item, i) => (
@@ -51,13 +51,16 @@ const Menu = ({ navigation }) => (
                     containerStyle={styles.listItem}
                     chevronColor={'#6BAE44'}
                     leftIcon={
-                        <Image 
-                            source={item.icon} 
-                            style={{width: 25, height: 25}}
+                        <Image
+                            source={item.icon}
+                            style={{ width: 25, height: 25 }}
                         />
                     }
                     titleStyle={styles.title}
-                    onPress={() => navigation.navigate('MenuCategoryList', {title: item.title})}
+                    onPress={() => {
+                        sendCategory(item.title);
+                        return navigation.navigate('MenuCategoryList', item.title);
+                    }}
                 />
             ))}
         </List>
@@ -67,7 +70,8 @@ const Menu = ({ navigation }) => (
 Menu.propTypes = {
     navigation: PropTypes.shape({
         navigate: PropTypes.func,
-    }).isRequired
+    }).isRequired,
+    sendCategory: PropTypes.func.isRequired
 }
 
 const MenuWithNavigation = withNavigation(Menu);

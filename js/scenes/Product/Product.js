@@ -1,19 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import ProductCard from '../../components/ProductCard/';
 import AddFavButton from '../../components/AddFavButton/';
 import ThreeIconTabs from '../../components/ThreeIconTabs/';
 import { styles } from './styles'
 
-const Product = () => (
+const Product = ({ item }) => (
     <ScrollView style={styles.container}>
-        <ProductCard arrowStyle={styles.arrowstyle} heartStyle={styles.heartstyle}/>
+        <ProductCard menuItemData={item} />
         <AddFavButton />
         <ThreeIconTabs />
     </ScrollView>
 )
 
-Product.propTypes = {}
+Product.propTypes = {
+    item: PropTypes.shape({
+        __typename: PropTypes.string,
+        category: PropTypes.string,
+        name: PropTypes.string,
+        ingredients: PropTypes.string,
+        price: PropTypes.string,
+        similarItems: PropTypes.string,
+        healthBenefits: PropTypes.string
+    })
+}
 
-export default Product
+export default Product;

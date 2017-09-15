@@ -1,14 +1,21 @@
 import React from 'react';
-import { View, Text, SegmentedControlIOS } from 'react-native';
+import { View, Text, SegmentedControlIOS, Icon, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { styles } from './styles';
 
-const CustomHeader = ({ title, buttons, selectedTab, dispatch, learnTab, tabChange }) => (
+const CustomHeader = ({ title, buttons, selectedTab, dispatch, learnTab, tabChange, backButton, navigation }) => (
 
     <View style={styles.header}>
-        <Text style={styles.title}>{title}</Text>
+        <View style={styles.headerText}>
+            {backButton === true &&
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Text>Back</Text>
+                </TouchableOpacity>
+            }
+            <Text style={styles.title}>{title}</Text>
+        </View>
         <SegmentedControlIOS
             values={buttons}
             selectedIndex={selectedTab || learnTab}
