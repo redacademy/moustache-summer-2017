@@ -1,16 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, View, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import ProductCard from '../../components/ProductCard/';
 
 import { styles } from './styles'
 
-const MenuCategoryList = ({ navigation, menuItemsList }) => (
-    <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.navigate('Product')}>
-            <Text> Take me to a product! </Text>
-        </TouchableOpacity>
-    </View>
+const MenuCategoryList = ({ navigation, menuItemsList, sendMenuItem }) => (
+    <ScrollView>
+        <View style={styles.container}>
+            {
+                menuItemsList.map((item) => (
+                    <TouchableOpacity 
+                        key={item.name} 
+                        onPress={() => {
+                            sendMenuItem(item);
+                            return navigation.navigate('Product');
+                        }}
+                    >
+                        <ProductCard
+                            menuItemData={item}
+                            renderArrow
+                        />
+                    </TouchableOpacity>
+                ))
+            }
+        </View>
+    </ScrollView>
 )
 
 MenuCategoryList.propTypes = {
@@ -27,9 +43,9 @@ MenuCategoryList.propTypes = {
             similarItems: PropTypes.string,
             healthBenefits: PropTypes.string
         })
-    )
+    ),
+    sendMenuItem: PropTypes.func.isRequired
 }
 
 const MenuCategoryListWithNavigation = withNavigation(MenuCategoryList);
-
 export default MenuCategoryListWithNavigation;

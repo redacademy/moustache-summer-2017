@@ -16,7 +16,7 @@ const ProductCard = ({ renderArrow, heartStyle, eventData, menuItemData, ingredi
         <View style={styles.wrapper}>
             <Image
                 style={styles.image}
-                source={{uri: eventData.imageLink}}
+                source={eventData ? {uri: eventData.imageLink} : {uri: menuItemData.imageLink}}
             />
             <View style={styles.box}>
                 <LinearGradientColor />
@@ -75,7 +75,6 @@ ProductCard.PropTypes = {
         name: PropTypes.string,
         whereInMenu: PropTypes.string
     })
-
 }
 
 export default ProductCard;

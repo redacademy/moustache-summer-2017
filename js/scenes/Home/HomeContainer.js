@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import { addNavigationHelpers } from 'react-navigation';
+import { ActivityIndicator } from 'react-native';
+
 import Featured from '../../components/Featured/';
 import Menu from '../Menu/';
 import CustomHeader from '../../components/Header/';
 import { homeTab } from '../../redux/modules/SegmentedComps';
-import { ActivityIndicator } from 'react-native';
 
 class HomeContainer extends Component {
 
@@ -25,16 +27,32 @@ class HomeContainer extends Component {
 
     render() {
         const selected = this.props.selectedTab;
-        const { data: { loading, menuItems } } = this.props;
+        const { data: { loading, menuItems }, navigationState, dispatch } = this.props;
 
         if (loading) return <ActivityIndicator />;
         if (selected === 1) {
             return (
-                <Featured featuredItems={menuItems}/>
+                <Featured
+                    featuredItems={menuItems}
+                    navigation={
+                        addNavigationHelpers({
+                            dispatch: dispatch,
+                            state: navigationState
+                        })
+                    }
+                />
+
             )
         } else if (selected === 0) {
             return (
-                <Menu />
+                <Menu 
+                    navigation={
+                        addNavigationHelpers({
+                            dispatch: dispatch,
+                            state: navigationState
+                        })
+                    }
+                />
             )
         }
     }
@@ -42,18 +60,22 @@ class HomeContainer extends Component {
 
 HomeContainer.propTypes = {
     selectedTab: PropTypes.number.isRequired,
-}
-
-function mapStateToProps(state) {
-    return {
-        selectedTab: state.segment.tabChoice,
-    }
+    navigationState: PropTypes.shape({
+        index: PropTypes.number,
+        routes: PropTypes.arrayOf(PropTypes.shape({
+            key: PropTypes.string,
+            routeName: PropTypes.string,
+        })),
+    }).isRequired,
+    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.shape({
+        loading: PropTypes.bool,
+    }).isRequired,
 }
 
 const fetchFeaturedItems = gql`
     query fetchFeaturedItems {
         featuredItems {
-            id
             category
             name
             featured
@@ -62,8 +84,13 @@ const fetchFeaturedItems = gql`
             similarItems
             healthBenefits
         }
-    }
+}
 `
-
 const featuredItems = graphql(fetchFeaturedItems)(HomeContainer);
-export default connect(mapStateToProps)(featuredItems);
+
+const homeContainerState = connect((state) => ({
+    selectedTab: state.segment.tabChoice,
+    navigationState: state.home
+}))(featuredItems);
+
+export default homeContainerState;
