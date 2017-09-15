@@ -57,6 +57,7 @@ function mapStateToProps(state) {
 const fetchMenuItems = gql`
     query fetchMenuItems {
         menuItems {
+            id
             category
             name
             ingredients
