@@ -16,20 +16,20 @@ class ThreeIconTabs extends Component {
     eventData = this.props.eventData
     menuItemData = this.props.menuItemData
     ingredientData = this.props.ingredientData
+    data = this.props.data
 
     FirstRoute = () =>
         <View style={[styles.descriptionContainer]}>
             <Text style={styles.description}>
                 {(() => {
-                    switch (this.ingredientData || this.eventData || this.menuItemData) {
-                        case (this.eventData):
-                            return this.eventData.date
-                        case (this.ingredientData):
-                            return this.ingredientData.healthBenefits
-                        case (this.menuItemData):
-                            return this.menuItemData.ingredients
-                        default:
-                            null
+                    if (this.data.__typename === 'Event') {
+                        return this.data.date
+                    } else if (this.data.__typename === 'Health') {
+                        return this.data.healthBenefits
+                    } else if (this.data.__typename === 'MenuItem') {
+                        return this.data.ingredients
+                    } else {
+                        return null
                     }
                 })()}
             </Text>
@@ -38,15 +38,14 @@ class ThreeIconTabs extends Component {
         <View style={[styles.descriptionContainer]}>
             <Text style={styles.description}>
                 {(() => {
-                    switch (this.ingredientData || this.eventData || this.menuItemData) {
-                        case (this.eventData):
-                            return this.eventData.location
-                        case (this.ingredientData):
-                            return this.ingredientData.details
-                        case (this.menuItemData):
-                            return this.menuItemData.healthBenefits
-                        default:
-                            null
+                    if (this.data.__typename === 'Event') {
+                        return this.data.location
+                    } else if (this.data.__typename === 'Health') {
+                        return this.data.details
+                    } else if (this.data.__typename === 'MenuItem') {
+                        return this.data.healthBenefits
+                    } else {
+                        return null
                     }
                 })()}
             </Text>
@@ -55,15 +54,14 @@ class ThreeIconTabs extends Component {
         <View style={[styles.descriptionContainer]}>
             <Text style={styles.description}>
                 {(() => {
-                    switch (this.ingredientData || this.eventData || this.menuItemData) {
-                        case (this.eventData):
-                            return this.eventData.details
-                        case (this.ingredientData):
-                            return this.ingredientData.whereInMenu
-                        case (this.menuItemData):
-                            return this.menuItemData.similarItems
-                        default:
-                            null
+                    if (this.data.__typename === 'Event') {
+                        return this.data.details
+                    } else if (this.data.__typename === 'Health') {
+                        return this.data.whereInMenu
+                    } else if (this.data.__typename === 'MenuItem') {
+                        return this.data.similarItems
+                    } else {
+                        return null
                     }
                 })()}
             </Text>
@@ -105,29 +103,29 @@ class ThreeIconTabs extends Component {
     _handleIndexChange = index => this.setState({ index });
 
     renderIcon = ({ route }) => {
-        switch (this.ingredientData || this.eventData || this.menuItemData) {
-            case (this.eventData):
-                return <Image style={styles.image} source={route.eventIcon} />
-            case (this.ingredientData):
-                return <Image style={styles.image} source={route.healthIcon} />
-            case (this.menuItemData):
-                return <Image style={styles.image} source={route.menuIcon} />
-            default:
-                null
+
+        if (this.data.__typename === 'Event') {
+            return <Image style={styles.image} source={route.eventIcon} />
+        } else if (this.data.__typename === 'Health') {
+            return <Image style={styles.image} source={route.healthIcon} />
+        } else if (this.data.__typename === 'MenuItem') {
+            return <Image style={styles.image} source={route.menuIcon} />
+        } else {
+            return null
         }
     }
 
 
+
     label = ({ route }) => {
-        switch (this.ingredientData || this.eventData || this.menuItemData) {
-            case (this.eventData):
-                return route.event
-            case (this.ingredientData):
-                return route.health
-            case (this.menuItemData):
-                return route.menu
-            default:
-                null
+        if (this.data.__typename === 'Event') {
+            return route.event
+        } else if (this.data.__typename === 'Health') {
+            return route.health
+        } else if (this.data.__typename === 'MenuItem') {
+            return route.menu
+        } else {
+            return null
         }
     }
 
@@ -164,7 +162,7 @@ class ThreeIconTabs extends Component {
 }
 
 ThreeIconTabs.propTypes = {
-    eventData: PropTypes.shape({
+    data: PropTypes.shape({
         __typename: PropTypes.string,
         name: PropTypes.string,
         date: PropTypes.string,

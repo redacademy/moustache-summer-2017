@@ -15,7 +15,7 @@ const SingleEvent = ({ eventData, openLink }) => (
                 action={openLink}
                 text={'Purchase Ticket'}
             />
-            <ThreeIconTabs eventData={eventData} />
+            <ThreeIconTabs data={eventData} />
         </View>
     </ScrollView>
 )

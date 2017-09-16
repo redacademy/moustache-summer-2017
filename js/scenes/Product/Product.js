@@ -8,7 +8,7 @@ import { styles } from './styles'
 const Product = ({ item }) => (
     <ScrollView style={styles.container}>
         <ProductCard menuItemData={item} />
-        <ThreeIconTabs menuItemData={item} />
+        <ThreeIconTabs data={item} />
     </ScrollView>
 )
 
