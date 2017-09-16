@@ -12,10 +12,6 @@ import infoicon from '../../assets/icons/events/moreinfoicon_active.png';
 import menuicon from '../../assets/icons//learn/whereinmenu_active.png';
 
 class ThreeIconTabs extends Component {
-
-    eventData = this.props.eventData
-    menuItemData = this.props.menuItemData
-    ingredientData = this.props.ingredientData
     data = this.props.data
 
     FirstRoute = () =>
