@@ -6,12 +6,25 @@ import ProductCard from '../ProductCard/';
 
 import { styles } from './styles';
 
-const Featured = ({ navigation }) => (
+const Featured = ({ navigation, featuredItems, sendMenuItem }) => (
     <ScrollView>
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => navigation.navigate('Product')}>
-                {/* TODO: ADD PRODUCTCARD COMPONENTS HERE */}
-            </TouchableOpacity>
+            {
+                featuredItems.map((item) => (
+                    <TouchableOpacity
+                        key={item.id}
+                        onPress={() => {
+                            sendMenuItem(item);
+                            return navigation.navigate('Product');
+                        }}
+                    >
+                        <ProductCard
+                            renderArrow
+                            menuItemData={item}
+                        />
+                    </TouchableOpacity>
+                ))
+            }
         </View>
     </ScrollView>
 );
@@ -19,7 +32,18 @@ const Featured = ({ navigation }) => (
 Featured.propTypes = {
     navigation: PropTypes.shape({
         navigate: PropTypes.func,
-    }).isRequired
+    }).isRequired,
+    featuredItems: PropTypes.arrayOf(
+        PropTypes.shape({
+        __typename: PropTypes.string,
+        category: PropTypes.string,
+        name: PropTypes.string,
+        ingredients: PropTypes.string,
+        price: PropTypes.string,
+        similarItems: PropTypes.string,
+        healthBenefits: PropTypes.string
+    })),
+    sendMenuItem: PropTypes.func.isRequired
 };
 
 const FeaturedWithNavigation = withNavigation(Featured);
