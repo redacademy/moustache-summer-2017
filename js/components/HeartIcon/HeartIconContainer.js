@@ -11,17 +11,25 @@ class HeartIconContainer extends Component {
     }
 
     render() {
-        return <HeartIcon
-            itemId={this.props.itemId}
-            isFaved={this.state.isFaved}
-            handleFavePress={this.handleFavePress}
-        />
+        const { faveButton, faveHeart } = this.props;
+
+        return (
+            <HeartIcon
+                itemId={this.props.itemId}
+                isFaved={this.state.isFaved}
+                handleFavePress={this.handleFavePress}
+                faveButton={faveButton}
+                faveHeart={faveHeart}
+            />
+        )
     }
 }
 
 HeartIconContainer.propTypes = {
     itemId: PropTypes.string.isRequired,
-    isFaved: PropTypes.bool.isRequired
+    isFaved: PropTypes.bool.isRequired,
+    faveButton: PropTypes.object,
+    faveHeart: PropTypes.object
 };
 
 export default HeartIconContainer;
