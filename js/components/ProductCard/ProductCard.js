@@ -82,13 +82,9 @@ ProductCard.propTypes = {
         healthBenefits: PropTypes.string,
         name: PropTypes.string,
         whereInMenu: PropTypes.string
-<<<<<<< HEAD
-    })
-=======
     }),
     numberOfLines: PropTypes.number,
     ellipsizeMode: PropTypes.string
->>>>>>> finished single-event scene
 }
 
 export default ProductCard;
