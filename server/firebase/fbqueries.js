@@ -87,3 +87,13 @@ exports.getFeaturedItems = () => {
         return data.filter(item => item.featured);
     })
 }
+
+exports.reset = () => {
+
+    return realm.write(() => {
+        ref.child('Growers').once('value')
+            .then((snapshot) => {
+                realm.create('Growers2', snapshot.val());
+            })
+      })
+}
