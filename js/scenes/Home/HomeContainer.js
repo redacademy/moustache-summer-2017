@@ -41,7 +41,6 @@ class HomeContainer extends Component {
         favesQuery();
     }
 
-
     sendMenuItem = (item) => {
         return this.props.dispatch(storeMenuItem(item))
     }
