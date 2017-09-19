@@ -7,7 +7,7 @@ import MenuCategoryList from './MenuCategoryList';
 import CustomHeader from '../../components/Header/';
 import { storeMenuItem } from '../../redux/modules/menuItems';
 import { ActivityIndicator } from 'react-native';
-import { loadFaves } from '../../redux/modules/faves';
+import { favesQuery } from '../../redux/modules/faves';
 
 class MenuCategoryListContainer extends Component {
 
@@ -26,7 +26,8 @@ class MenuCategoryListContainer extends Component {
     }
 
     componentWillMount() {
-        this.props.dispatch(loadFaves())
+        const { favesQuery } = this.props
+        favesQuery()
     }
 
     addFaves = (list) => {
@@ -103,8 +104,9 @@ MenuCategoryListContainer.propTypes = {
         })
     ),
     menuCategory: PropTypes.string,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    favesQuery: PropTypes.func.isRequired
 }
 
 const MenuCategoryWithData = graphql(fetchMenuItems)(MenuCategoryListContainer)
-export default connect(mapStateToProps)(MenuCategoryWithData);
+export default connect(mapStateToProps, { favesQuery })(MenuCategoryWithData);

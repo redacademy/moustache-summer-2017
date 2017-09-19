@@ -11,7 +11,7 @@ import Featured from '../../components/Featured/';
 import Menu from '../Menu/';
 import CustomHeader from '../../components/Header/';
 import { homeTab } from '../../redux/modules/SegmentedComps';
-import { loadFaves } from '../../redux/modules/faves';
+import { favesQuery } from '../../redux/modules/faves';
 
 class HomeContainer extends Component {
 
@@ -36,7 +36,8 @@ class HomeContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(loadFaves())
+        const { favesQuery } = this.props
+        favesQuery()
     }
 
 
@@ -48,7 +49,7 @@ class HomeContainer extends Component {
 
         const selected = this.props.selectedTab;
         const { data: { loading, featuredItems }, navigationState, dispatch } = this.props;
-        const itemsWithFaves = this.addFaves(menuItems)
+        const itemsWithFaves = this.addFaves(featuredItems)
 
         if (loading) return <ActivityIndicator />;
         return (
@@ -95,6 +96,7 @@ HomeContainer.propTypes = {
             id: PropTypes.string
         })
     ),
+    favesQuery: PropTypes.func.isRequired
 }
 
 const fetchFeaturedItems = gql`
@@ -116,6 +118,6 @@ const featuredItems = graphql(fetchFeaturedItems)(HomeContainer);
 
 const homeContainerState = connect((state) => ({
     navigationState: state.home
-}))(featuredItems);
+}), { favesQuery })(featuredItems);
 
 export default homeContainerState;
