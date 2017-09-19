@@ -11,15 +11,15 @@ const MenuCategoryList = ({ navigation, menuItemsList, sendMenuItem }) => (
         <View style={styles.container}>
             {
                 menuItemsList.map((item) => (
-                    <TouchableOpacity 
-                        key={item.name} 
+                    <TouchableOpacity
+                        key={item.name}
                         onPress={() => {
                             sendMenuItem(item);
                             return navigation.navigate('Product', item.category);
                         }}
                     >
                         <ProductCard
-                            menuItemData={item}
+                            data={item}
                             renderArrow
                         />
                     </TouchableOpacity>

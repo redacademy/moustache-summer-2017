@@ -12,7 +12,7 @@ const Events = ({ navigation, eventsList }) => (
                 eventsList.map(event => (
                     <TouchableOpacity key={event.name} onPress={() => navigation.navigate('SingleEvent', event)}>
                         <ProductCard
-                            eventData={event}
+                            data={event}
                             renderArrow
                             numberOfLines={1} ellipsizeMode={'tail'}
                         />

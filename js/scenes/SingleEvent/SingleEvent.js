@@ -9,7 +9,7 @@ import { styles } from './styles';
 const SingleEvent = ({ eventData, openLink }) => (
     <ScrollView>
         <View style={styles.container}>
-            <ProductCard eventData={eventData} />
+            <ProductCard data={eventData} />
             <ActionButton
                 url={eventData.eventLink}
                 action={openLink}

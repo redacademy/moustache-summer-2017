@@ -11,37 +11,21 @@ import HeartIcon from '../HeartIcon';
 import Icon from 'react-native-vector-icons/Entypo';
 import { styles } from './styles';
 
-const ProductCard = ({ renderArrow, heartStyle, eventData, menuItemData, ingredientData, numberOfLines, ellipsizeMode }) => (
+const ProductCard = ({ renderArrow, heartStyle, data }) => (
     <View style={styles.container}>
         <View style={styles.wrapper}>
-            {(() => {
-                switch (menuItemData || ingredientData || eventData) {
-                    case (eventData):
-                        return <Image style={styles.image} source={{ uri: eventData.imageLink }} />
-                    case (ingredientData):
-                        return <Image style={styles.image} source={{ uri: ingredientData.imageLink }} />
-                    case (menuItemData):
-                        return <Image style={styles.image} source={{ uri: menuItemData.imageLink }} />
-                    default:
-                        null
-                }
-            })()}
+            <Image style={styles.image} source={{ uri: data.imageLink }} />
             <View style={styles.box}>
                 <LinearGradientColor />
                 <View>
+                    <Text numberOfLines={1} ellipsizeMode={'tail'} style={styles.text}>{data.name}</Text>
                     {
-                        (menuItemData || ingredientData) ?
-                            <Text style={styles.text}>{menuItemData ? menuItemData.name : ingredientData.name}</Text>
-                            :
-                            <Text numberOfLines={numberOfLines} ellipsizeMode={ellipsizeMode} style={styles.text}>{eventData.name}</Text>
-                    }
-                    {
-                        (menuItemData || eventData) &&
-                        <Text style={styles.price}>{eventData ? eventData.date : menuItemData.price}</Text>
+                        ((data.__typename === 'MenuItem') || (data.__typename === 'Event')) &&
+                        <Text style={styles.price}>{(data.__typename === 'Event') ? data.date : data.price}</Text>
                     }
                 </View>
                 {
-                    menuItemData && // turn menuItemData to true to test
+                    (data.__typename === 'MenuItem') && // turn menuItemData to true to test
                     <HeartIcon
                         itemId={'1'}
                         isFaved={false}
@@ -56,10 +40,10 @@ const ProductCard = ({ renderArrow, heartStyle, eventData, menuItemData, ingredi
     </View>
 );
 
-ProductCard.propTypes = {
+ProductCard.PropTypes = {
     renderArrow: PropTypes.bool,
     heartStyle: PropTypes.object,
-    eventData: PropTypes.shape({
+    data: PropTypes.shape({
         name: PropTypes.string,
         date: PropTypes.string,
         timeStart: PropTypes.string,
@@ -67,24 +51,15 @@ ProductCard.propTypes = {
         location: PropTypes.string,
         imageLink: PropTypes.string,
         eventLink: PropTypes.string,
-        details: PropTypes.string
-    }),
-    menuItemData: PropTypes.shape({
+        details: PropTypes.string,
+        id: PropTypes.string,
         category: PropTypes.string,
-        name: PropTypes.string,
         ingredients: PropTypes.string,
         price: PropTypes.string,
         similarItems: PropTypes.string,
-        healthBenefits: PropTypes.string
-    }),
-    ingredientData: PropTypes.shape({
-        details: PropTypes.string,
         healthBenefits: PropTypes.string,
-        name: PropTypes.string,
         whereInMenu: PropTypes.string
     }),
-    numberOfLines: PropTypes.number,
-    ellipsizeMode: PropTypes.string
 }
 
 export default ProductCard;
