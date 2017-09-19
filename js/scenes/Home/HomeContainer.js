@@ -11,7 +11,7 @@ import Featured from '../../components/Featured/';
 import Menu from '../Menu/';
 import CustomHeader from '../../components/Header/';
 import { homeTab } from '../../redux/modules/SegmentedComps';
-import { favesQuery } from '../../redux/modules/faves';
+import { favesQuery, getUserTimestamp } from '../../redux/modules/user';
 
 class HomeContainer extends Component {
 
@@ -36,8 +36,9 @@ class HomeContainer extends Component {
     }
 
     componentDidMount() {
-        const { favesQuery } = this.props
-        favesQuery()
+        const { favesQuery, getUserTimestamp } = this.props;
+        getUserTimestamp();
+        favesQuery();
     }
 
 
@@ -76,7 +77,7 @@ HomeContainer.propTypes = {
             routeName: PropTypes.string,
         })),
     }).isRequired,
-    dispatch: PropTypes.func.isRequired,
+    dispatch: PropTypes.func,
     data: PropTypes.shape({
         loading: PropTypes.bool,
     }).isRequired,
@@ -96,7 +97,8 @@ HomeContainer.propTypes = {
             id: PropTypes.string
         })
     ),
-    favesQuery: PropTypes.func.isRequired
+    favesQuery: PropTypes.func.isRequired,
+    getUserTimestamp: PropTypes.func.isRequired
 }
 
 const fetchFeaturedItems = gql`
@@ -117,7 +119,9 @@ const fetchFeaturedItems = gql`
 const featuredItems = graphql(fetchFeaturedItems)(HomeContainer);
 
 const homeContainerState = connect((state) => ({
-    navigationState: state.home
-}), { favesQuery })(featuredItems);
+    selectedTab: state.segment.tabChoice,
+    navigationState: state.home,
+    faves: state.user.faves
+}), { favesQuery, getUserTimestamp })(featuredItems);
 
 export default homeContainerState;

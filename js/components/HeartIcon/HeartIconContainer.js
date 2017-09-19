@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import HeartIcon from './HeartIcon';
-import { faveToggle } from '../../redux/modules/faves'
+import { faveToggle } from '../../redux/modules/user'
 import { connect } from 'react-redux';
 
 class HeartIconContainer extends Component {
@@ -9,9 +9,7 @@ class HeartIconContainer extends Component {
     state = { isFaved: this.props.isFaved }
 
     handleFavePress = () => {
-        console.log('will toggle ', this.props.itemId)
         this.props.dispatch(faveToggle(this.props.itemId))
-        
     }
 
     render() {

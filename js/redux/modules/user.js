@@ -2,6 +2,11 @@ import realm from '../../config/modules'
 
 // Action creators
 
+export const getUserTimestamp = () => ({
+	type: 'LOAD_USER_TIMESTAMP',
+	timestamp: Date.now()
+})
+
 export const loadFavesSuccess = (faves) => ({
 	type: 'LOAD_FAVES_SUCCESS',
 	faves
@@ -55,18 +60,22 @@ export const faveToggle = (id) => {
 	}
 }
 
-
 // Reducers:
 
 const initialState = {
 	faves: [],
-	fave: {},
+	timestamp: null,
 	error: {},
 	isLoading: false
 };
 
-export function faveReducer(state = initialState, action) {
+export function userReducer(state = initialState, action) {
 	switch (action.type) {
+		case 'LOAD_USER_TIMESTAMP':
+			return {
+				...state,
+				timestamp: action.timestamp
+			};
 		case 'LOAD_FAVES_BEGIN':
 			return {
 				...state,

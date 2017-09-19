@@ -7,7 +7,7 @@ import MenuCategoryList from './MenuCategoryList';
 import CustomHeader from '../../components/Header/';
 import { storeMenuItem } from '../../redux/modules/menuItems';
 import { ActivityIndicator } from 'react-native';
-import { favesQuery } from '../../redux/modules/faves';
+import { favesQuery } from '../../redux/modules/user';
 
 class MenuCategoryListContainer extends Component {
 
@@ -78,7 +78,7 @@ const fetchMenuItems = gql`
 function mapStateToProps(state) {
     return {
         menuCategory: state.menu.category,
-        faves: state.faves.faves
+        faves: state.user.faves
     };
 }
 
@@ -104,7 +104,7 @@ MenuCategoryListContainer.propTypes = {
         })
     ),
     menuCategory: PropTypes.string,
-    dispatch: PropTypes.func.isRequired,
+    dispatch: PropTypes.func,
     favesQuery: PropTypes.func.isRequired
 }
 

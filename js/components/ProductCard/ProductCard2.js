@@ -10,8 +10,7 @@
 // import HeartIcon from '../HeartIcon';
 // import Icon from 'react-native-vector-icons/Entypo';
 // import { styles } from './styles';
-// import { toggleFave } from '../../redux/modules/faves';
-
+// import { toggleFave } from '../../redux/modules/user';
 // const ProductCard = ({ arrowStyle, heartStyle, dispatch }) => (
 //     <View style={styles.container}>
 //         <View style={styles.wrapper}>
