@@ -15,7 +15,7 @@ const Featured = ({ navigation, featuredItems, sendMenuItem }) => (
                         key={item.id}
                         onPress={() => {
                             sendMenuItem(item);
-                            return navigation.navigate('Product');
+                            return navigation.navigate('Product', 'Featured');
                         }}
                     >
                         <ProductCard

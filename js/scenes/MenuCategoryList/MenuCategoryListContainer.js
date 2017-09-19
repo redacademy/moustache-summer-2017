@@ -14,9 +14,11 @@ class MenuCategoryListContainer extends Component {
         return {
             header: (
                 <CustomHeader
-                    title={navigation.state.routeName}
+                    title={navigation.state.params}
                     buttons={['Menu', 'Featured']}
-                    //tabChange={homeTab}
+                    backButton={true}
+                    navigation={navigation}
+                    selectedTab={0}
                 />
             )
         }

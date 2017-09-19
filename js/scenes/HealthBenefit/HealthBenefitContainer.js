@@ -3,14 +3,25 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import HealthBenefit from './HealthBenefit';
 import { ActivityIndicator } from 'react-native';
+
+import HealthBenefit from './HealthBenefit';
+import CustomHeader from '../../components/Header/';
 
 class HealthBenefitContainer extends Component {
 
-    componentDidMount() {
-        // ADD DISPATCH FUNCTION HERE TO FETCH DATA
-    }
+    static navigationOptions = ({ navigation }) => {
+        return {
+            header: (
+                <CustomHeader
+                    title={'Learn'}
+                    buttons={['Events', 'Ingredients', 'Growers']}
+                    selectedTab={1}
+                    navigation={navigation}
+                />
+            )
+        }
+    };
 
     render() {
         const { data: { loading, healthBenefits } } = this.props;

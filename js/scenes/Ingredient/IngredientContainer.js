@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Ingredient from './Ingredient';
+import CustomHeader from '../../components/Header/';
 import { colors } from '../../config/styles';
 
 class IngredientContainer extends Component {
-    static navigationOptions = {
-        title: 'Learn',
-        headerTintColor: 'white',
-        headerStyle: { backgroundColor: colors.lightGreen },
-    };
+    
+    static navigationOptions = ({ navigation, screenProps }) => {
+        return {
+            header: (
+                <CustomHeader
+                    title={'Learn'}
+                    buttons={['Events', 'Ingredients', 'Growers']}
+                    backButton={true}
+                    navigation={navigation}
+                />
+            )
+        }
+    }
 
     render() {
         return (
