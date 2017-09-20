@@ -11,58 +11,17 @@ import locationicon from '../../assets/icons/events/locationicon_active.png';
 import infoicon from '../../assets/icons/events/moreinfoicon_active.png';
 import menuicon from '../../assets/icons//learn/whereinmenu_active.png';
 
+
+const RouterContent = ({ children }) => (
+    <View style={[styles.descriptionContainer]}>
+        <Text style={styles.description}>
+            {children}
+        </Text>
+    </View>
+)
+
 class ThreeIconTabs extends Component {
     data = this.props.data
-
-    FirstRoute = () =>
-        <View style={[styles.descriptionContainer]}>
-            <Text style={styles.description}>
-                {(() => {
-                    if (this.data.__typename === 'Event') {
-                        return this.data.date
-                    } else if (this.data.__typename === 'Health') {
-                        return this.data.healthBenefits
-                    } else if (this.data.__typename === 'MenuItem') {
-                        return this.data.ingredients
-                    } else {
-                        return null
-                    }
-                })()}
-            </Text>
-        </View>;
-    SecondRoute = () =>
-        <View style={[styles.descriptionContainer]}>
-            <Text style={styles.description}>
-                {(() => {
-                    if (this.data.__typename === 'Event') {
-                        return this.data.location
-                    } else if (this.data.__typename === 'Health') {
-                        return this.data.details
-                    } else if (this.data.__typename === 'MenuItem') {
-                        return this.data.healthBenefits
-                    } else {
-                        return null
-                    }
-                })()}
-            </Text>
-        </View>;
-    ThirdRoute = () =>
-        <View style={[styles.descriptionContainer]}>
-            <Text style={styles.description}>
-                {(() => {
-                    if (this.data.__typename === 'Event') {
-                        return this.data.details
-                    } else if (this.data.__typename === 'Health') {
-                        return this.data.whereInMenu
-                    } else if (this.data.__typename === 'MenuItem') {
-                        return this.data.similarItems
-                    } else {
-                        return null
-                    }
-                })()}
-            </Text>
-        </View>;
-
     state = {
         index: 0,
         routes: [
@@ -96,51 +55,61 @@ class ThreeIconTabs extends Component {
         ],
     };
 
-    _handleIndexChange = index => this.setState({ index });
-
-    renderIcon = ({ route }) => {
-
-        if (this.data.__typename === 'Event') {
-            return <Image style={styles.image} source={route.eventIcon} />
-        } else if (this.data.__typename === 'Health') {
-            return <Image style={styles.image} source={route.healthIcon} />
-        } else if (this.data.__typename === 'MenuItem') {
-            return <Image style={styles.image} source={route.menuIcon} />
-        } else {
-            return null
+    getContext = (typename) => {
+        switch (typename.toLowerCase()) {
+            case "event":
+                return {
+                    _getIcon: ({ route }) => <Image style={styles.image} source={route.eventIcon} />,
+                    _getLabel: ({ route }) => route.event,
+                    _getRoute1: () => <RouterContent> {this.props.data.date} </RouterContent>,
+                    _getRoute2: () => <RouterContent> {this.props.data.location} </RouterContent>,
+                    _getRoute3: () => <RouterContent> {this.props.data.details} </RouterContent>,
+                }
+            case "health":
+                return {
+                    _getIcon: ({ route }) => <Image style={styles.image} source={route.healthIcon} />,
+                    _getLabel: ({ route }) => route.health,
+                    _getRoute1: () => <RouterContent>{this.props.data.healthBenefits}</RouterContent>,
+                    _getRoute2: () => <RouterContent>{this.props.data.details}</RouterContent>,
+                    _getRoute3: () => <RouterContent>{this.props.data.whereInMenu}</RouterContent>,
+                }
+            case "menuitem":
+                return {
+                    _getIcon: ({ route }) => <Image style={styles.image} source={route.menuIcon} />,
+                    _getLabel: ({ route }) => route.menu,
+                    _getRoute1: () => <RouterContent>{this.props.data.ingredients}</RouterContent>,
+                    _getRoute2: () => <RouterContent> {this.props.data.healthBenefits}</RouterContent>,
+                    _getRoute3: () => <RouterContent>{this.props.data.similarItems}</RouterContent>,
+                }
+            default:
+                return
         }
     }
 
+    handleIndexChange = index => this.setState({ index });
 
-
-    label = ({ route }) => {
-        if (this.data.__typename === 'Event') {
-            return route.event
-        } else if (this.data.__typename === 'Health') {
-            return route.health
-        } else if (this.data.__typename === 'MenuItem') {
-            return route.menu
-        } else {
-            return null
-        }
+    renderHeader = props => {
+        const context = this.getContext(this.props.data.__typename);
+        return (
+            <TabBar
+                {...props}
+                renderIcon={context._getIcon}
+                tabStyle={styles.tabs}
+                labelStyle={styles.title}
+                style={styles.tabBar}
+                indicatorStyle={styles.indicator}
+                getLabelText={context._getLabel}
+            />);
     }
 
-    _renderHeader = props =>
-        <TabBar
-            {...props}
-            renderIcon={this.renderIcon}
-            tabStyle={styles.tabs}
-            labelStyle={styles.title}
-            style={styles.tabBar}
-            indicatorStyle={styles.indicator}
-            getLabelText={this.label}
-        />;
-
-    _renderScene = SceneMap({
-        '1': this.FirstRoute,
-        '2': this.SecondRoute,
-        '3': this.ThirdRoute,
-    });
+    getRenderScene = () => {
+        const context = this.getContext(this.props.data.__typename);
+        return SceneMap({
+            '1': context._getRoute1,
+            '2': context._getRoute2,
+            '3': context._getRoute3
+        });
+    }
 
     render() {
         return (
@@ -148,9 +117,9 @@ class ThreeIconTabs extends Component {
                 <TabViewAnimated
                     style={styles.container}
                     navigationState={this.state}
-                    renderScene={this._renderScene}
-                    renderHeader={this._renderHeader}
-                    onIndexChange={this._handleIndexChange}
+                    renderScene={this.getRenderScene()}
+                    renderHeader={this.renderHeader}
+                    onIndexChange={this.handleIndexChange}
                 />
             </View>
         )
@@ -167,24 +136,18 @@ ThreeIconTabs.propTypes = {
         location: PropTypes.string,
         imageLink: PropTypes.string,
         eventLink: PropTypes.string,
-        details: PropTypes.string
-    }),
-    menuItemData: PropTypes.shape({
-        category: PropTypes.string,
-        name: PropTypes.string,
+        details: PropTypes.string,
         ingredients: PropTypes.string,
         price: PropTypes.string,
         similarItems: PropTypes.string,
-        healthBenefits: PropTypes.string
-    }),
-    ingredientData: PropTypes.shape({
-        details: PropTypes.string,
         healthBenefits: PropTypes.string,
         id: PropTypes.string,
-        imageLink: PropTypes.string,
-        name: PropTypes.string,
         whereInMenu: PropTypes.string
-    })
+    }),
 }
+RouterContent.propTypes = {
+    children: PropTypes.arrayOf(PropTypes.string)
+}
+
 
 export default ThreeIconTabs;
