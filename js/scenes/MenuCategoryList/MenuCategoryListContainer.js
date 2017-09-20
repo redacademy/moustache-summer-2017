@@ -12,7 +12,7 @@ import { favesQuery } from '../../redux/modules/user';
 
 class MenuCategoryListContainer extends Component {
 
-    static navigationOptions = ({ navigation, screenProps }) => {
+    static navigationOptions = ({ navigation }) => {
         return {
             header: (
                 <CustomHeader
