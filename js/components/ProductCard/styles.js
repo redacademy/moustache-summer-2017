@@ -39,8 +39,9 @@ export const styles = StyleSheet.create({
 		resizeMode: 'contain',
 	},
 	box: {
-		bottom: 50,
-		height: 50,
+		height: 'auto',
+		position: 'absolute',
+		bottom: 0,
 		zIndex: 2,
 		width: '100%',
 		flexDirection: 'row',

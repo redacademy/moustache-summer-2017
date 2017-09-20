@@ -2,15 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ScrollView } from 'react-native';
 import ProductCard from '../../components/ProductCard/';
-import AddFavButton from '../../components/AddFavButton/';
 import ThreeIconTabs from '../../components/ThreeIconTabs/';
-import { styles } from './styles'
+import { styles } from './styles';
 
 const Product = ({ item }) => (
     <ScrollView style={styles.container}>
-        <ProductCard menuItemData={item} />
-        <AddFavButton />
-        <ThreeIconTabs />
+        <ProductCard data={item} />
+        <ThreeIconTabs data={item} />
     </ScrollView>
 )
 

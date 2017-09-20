@@ -8,16 +8,17 @@ import { styles } from './styles'
 const Events = ({ navigation, eventsList }) => (
     <ScrollView>
         <View style={styles.container}>
-        {
-            eventsList.map(event => (
-                <TouchableOpacity key={event.name} onPress={() => navigation.navigate('SingleEvent')}>
-                    <ProductCard 
-                        eventData={event}
-                        renderArrow
-                    />
-                </TouchableOpacity>
-            ))
-        }
+            {
+                eventsList.map(event => (
+                    <TouchableOpacity key={event.name} onPress={() => navigation.navigate('SingleEvent', event)}>
+                        <ProductCard
+                            data={event}
+                            renderArrow
+                            numberOfLines={1} ellipsizeMode={'tail'}
+                        />
+                    </TouchableOpacity>
+                ))
+            }
         </View>
     </ScrollView>
 )
