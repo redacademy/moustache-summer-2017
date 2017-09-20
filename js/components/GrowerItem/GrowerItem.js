@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
+
 import LineSeparator from '../LineSeparator/';
 import { colors } from '../../config/styles';
 import { styles } from './styles';
@@ -30,6 +31,5 @@ GrowerItem.propTypes = {
     }),
     growerLink: PropTypes.func.isRequired
 }
-
 
 export default GrowerItem;

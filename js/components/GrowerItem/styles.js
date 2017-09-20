@@ -33,5 +33,5 @@ export const styles = StyleSheet.create({
     line: {
         width: '100%',
         color: colors.lightGreen
-    }
-})
+    },
+});

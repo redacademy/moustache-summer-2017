@@ -1,24 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, View, Text } from 'react-native';
+
 import { styles } from './styles';
 import GrowerItem from '../../components/GrowerItem/';
 
 const Growers = ({ growersList, growerLink, error }) => (
     <ScrollView>
         <View style={styles.container}>
-        {
-            error ?
-                <Text>{error}</Text>
-            :
-                growersList.map((grower) => (
-                    <GrowerItem
-                        key={grower.id}
-                        grower={grower}
-                        growerLink={growerLink}
-                    />
-                ))
-        }
+            {
+                error ?
+                    <Text>{error}</Text>
+                    :
+                    growersList.map((grower) => (
+                        <GrowerItem
+                            key={grower.id}
+                            grower={grower}
+                            growerLink={growerLink}
+                        />
+                    ))
+            }
         </View>
     </ScrollView>
 )
@@ -34,7 +35,9 @@ Growers.propTypes = {
         })
     ),
     growerLink: PropTypes.func.isRequired,
-    error: PropTypes.string
+    error: PropTypes.oneOf([
+        PropTypes.object
+    ])
 }
 
-export default Growers
+export default Growers;
