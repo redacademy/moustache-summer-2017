@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ActivityIndicator } from 'react-native';
+import { addNavigationHelpers } from 'react-navigation';
+
 import Favourite from './Favourite';
 import { storeMenuItem } from '../../redux/modules/menuItems';
 import { colors } from '../../config/styles';
@@ -20,13 +22,19 @@ class FavouriteContainer extends Component {
     }
 
     render() {
-        const { data: { loading, menuItems } } = this.props;
+        const { data: { loading, menuItems }, navigationState, dispatch } = this.props;
 
         if (loading) return <ActivityIndicator />;
         return (
             <Favourite
                 favouriteItems={menuItems}
                 sendMenuItem={this.sendMenuItem}
+                navigation={
+                    addNavigationHelpers({
+                        dispatch: dispatch,
+                        state: navigationState
+                    })
+                }
             />
         )
     }
@@ -49,6 +57,7 @@ const fetchMenuItems = gql`
 
 function mapStateToProps(state) {
     return {
+        navigationState: state.home
         //TO ADD: faves: state.faves.faves
     }
 }

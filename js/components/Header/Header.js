@@ -1,28 +1,29 @@
 import React from 'react';
-import { View, Text, SegmentedControlIOS, Icon, TouchableOpacity } from 'react-native';
+import { View, Text, SegmentedControlIOS, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import { styles } from './styles';
 
-const CustomHeader = ({ title, buttons, selectedTab, dispatch, learnTab, tabChange, backButton, navigation }) => (
+const CustomHeader = ({ title, buttons, selectedTab, backButton, navigation }) => (
 
     <View style={styles.header}>
         <View style={styles.headerText}>
             {backButton === true &&
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Text>Back</Text>
+                    <Icon name={"ios-arrow-back"} style={styles.backButton} />
                 </TouchableOpacity>
             }
             <Text style={styles.title}>{title}</Text>
         </View>
         <SegmentedControlIOS
             values={buttons}
-            selectedIndex={selectedTab || learnTab}
+            selectedIndex={selectedTab}
             tintColor='white'
             style={styles.button}
             onChange={(event) => {
-                dispatch(tabChange(event.nativeEvent.selectedSegmentIndex))
+                navigation.navigate(`${event.nativeEvent.value}`)
             }}
         />
     </View>
@@ -33,16 +34,6 @@ CustomHeader.propTypes = {
     buttons: PropTypes.arrayOf(PropTypes.string).isRequired,
     selectedTab: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,
-    learnTab: PropTypes.number.isRequired,
-    tabChange: PropTypes.func.isRequired,
 }
 
-
-function mapStateToProps(state) {
-    return {
-        selectedTab: state.segment.tabChoice,
-        learnTab: state.segment.learnChoice,
-    }
-}
-
-export default connect(mapStateToProps)(CustomHeader);
+export default CustomHeader;

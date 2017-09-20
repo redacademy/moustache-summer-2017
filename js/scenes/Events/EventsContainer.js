@@ -3,15 +3,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import Events from './Events';
 import { ActivityIndicator } from 'react-native';
 
+import Events from './Events';
+import CustomHeader from '../../components/Header/';
+
 class EventsContainer extends Component {
-    static route = {
-        navigationBar: {
-            title: 'Events',
+    static navigationOptions = ({ navigation }) => {
+        return {
+            header: (
+                <CustomHeader
+                    title={'Learn'}
+                    buttons={['Events', 'Ingredients', 'Growers']}
+                    selectedTab={0}
+                    navigation={navigation}
+                />
+            )
         }
-    }
+    };
 
     componentDidMount() {
         // ADD DISPATCH FUNCTION HERE TO FETCH DATA

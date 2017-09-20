@@ -15,7 +15,7 @@ const MenuCategoryList = ({ navigation, menuItemsList, sendMenuItem }) => (
                         key={item.name} 
                         onPress={() => {
                             sendMenuItem(item);
-                            return navigation.navigate('Product');
+                            return navigation.navigate('Product', item.category);
                         }}
                     >
                         <ProductCard

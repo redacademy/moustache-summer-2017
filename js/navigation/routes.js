@@ -6,7 +6,6 @@ import { Image, StyleSheet, Icon } from 'react-native';
 import { colors } from '../config/styles';
 
 import Home from '../scenes/Home/';
-import Learn from '../scenes/Learn/';
 import Events from '../scenes/Events/';
 import Favourite from '../scenes/Favourite/';
 import Growers from '../scenes/Growers/';
@@ -18,23 +17,23 @@ import Ingredient from '../scenes/Ingredient/';
 import SingleEvent from '../scenes/SingleEvent/';
 
 export const homeStack = StackNavigator({
-    Home: { screen: Home },
+    Featured: { screen: Home },
     MenuCategoryList: { screen: MenuCategoryList },
     Menu: { screen: Menu },
-    Product: { screen: Product }
+    // Product: { screen: Product }
 });
 
 export const learnStack = StackNavigator({
-    Learn: { screen: Learn },
+    Ingredients: { screen: HealthBenefit },
     Events: { screen: Events },
-    HealthBenefit: { screen: HealthBenefit },
     Growers: { screen: Growers },
     Ingredient: { screen: Ingredient },
     SingleEvent: { screen: SingleEvent }
 });
 
 export const favouritesStack = StackNavigator({
-    Favourites: { screen: Favourite }
+    Favourites: { screen: Favourite },
+    Product: { screen: Product },
 })
 
 const homeIcon = require('../assets/icons/footer/homeicon.png');
@@ -45,19 +44,19 @@ export const Tabs = TabNavigator({
     Home: {
         screen: homeStack,
         navigationOptions: {
-            tabBarIcon: <Image source={homeIcon} style={{height: 20, width: 22, overflow: 'visible' }}/>,
+            tabBarIcon: <Image source={homeIcon} style={{ height: 20, width: 22, overflow: 'visible' }} />,
         }
     },
     Learn: {
         screen: learnStack,
         navigationOptions: {
-            tabBarIcon: <Image source={learnIcon} style={{height: 20, width: 25, overflow: 'visible' }}/>,
+            tabBarIcon: <Image source={learnIcon} style={{ height: 20, width: 25, overflow: 'visible' }} />,
         }
     },
     Favourites: {
         screen: favouritesStack,
         navigationOptions: {
-            tabBarIcon: <Image source={favesIcon} style={{height: 20, width: 25, overflow: 'visible' }}/>,
+            tabBarIcon: <Image source={favesIcon} style={{ height: 20, width: 25, overflow: 'visible' }} />,
         }
     },
 }, {

@@ -5,21 +5,22 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { addNavigationHelpers } from 'react-navigation';
 import { ActivityIndicator } from 'react-native';
+
 import { storeMenuItem } from '../../redux/modules/menuItems';
 import Featured from '../../components/Featured/';
 import Menu from '../Menu/';
 import CustomHeader from '../../components/Header/';
-import { homeTab } from '../../redux/modules/SegmentedComps';
 
 class HomeContainer extends Component {
 
-    static navigationOptions = () => {
+    static navigationOptions = ({ navigation }) => {
         return {
             header: (
                 <CustomHeader
                     title={'Home'}
                     buttons={['Menu', 'Featured']}
-                    tabChange={homeTab}
+                    selectedTab={1}
+                    navigation={navigation}
                 />
             )
         }
@@ -34,32 +35,19 @@ class HomeContainer extends Component {
         const { data: { loading, featuredItems }, navigationState, dispatch } = this.props;
 
         if (loading) return <ActivityIndicator />;
-        if (selected === 1) {
-            return (
-                <Featured
-                    featuredItems={featuredItems}
-                    navigation={
-                        addNavigationHelpers({
-                            dispatch: dispatch,
-                            state: navigationState
-                        })
-                    }
-                    sendMenuItem={this.sendMenuItem}
-                />
+        return (
+            <Featured
+                featuredItems={featuredItems}
+                navigation={
+                    addNavigationHelpers({
+                        dispatch: dispatch,
+                        state: navigationState
+                    })
+                }
+                sendMenuItem={this.sendMenuItem}
+            />
 
-            )
-        } else if (selected === 0) {
-            return (
-                <Menu 
-                    navigation={
-                        addNavigationHelpers({
-                            dispatch: dispatch,
-                            state: navigationState
-                        })
-                    }
-                />
-            )
-        }
+        )
     }
 }
 
@@ -78,14 +66,15 @@ HomeContainer.propTypes = {
     }).isRequired,
     featuredItems: PropTypes.arrayOf(
         PropTypes.shape({
-        __typename: PropTypes.string,
-        category: PropTypes.string,
-        name: PropTypes.string,
-        ingredients: PropTypes.string,
-        price: PropTypes.string,
-        similarItems: PropTypes.string,
-        healthBenefits: PropTypes.string
-    }))
+            __typename: PropTypes.string,
+            category: PropTypes.string,
+            name: PropTypes.string,
+            ingredients: PropTypes.string,
+            price: PropTypes.string,
+            similarItems: PropTypes.string,
+            healthBenefits: PropTypes.string
+        })
+    ),
 }
 
 const fetchFeaturedItems = gql`
@@ -106,7 +95,6 @@ const fetchFeaturedItems = gql`
 const featuredItems = graphql(fetchFeaturedItems)(HomeContainer);
 
 const homeContainerState = connect((state) => ({
-    selectedTab: state.segment.tabChoice,
     navigationState: state.home
 }))(featuredItems);
 

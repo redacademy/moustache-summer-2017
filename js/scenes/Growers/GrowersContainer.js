@@ -3,15 +3,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import Growers from './Growers';
 import { ActivityIndicator, Linking } from 'react-native';
 
+import CustomHeader from '../../components/Header/';
+import Growers from './Growers';
+
 class GrowersContainer extends Component {
-    static route = {
-        navigationBar: {
-            title: 'Growers',
+    static navigationOptions = ({ navigation }) => {
+        return {
+            header: (
+                <CustomHeader
+                    title={'Learn'}
+                    buttons={['Events', 'Ingredients', 'Growers']}
+                    selectedTab={2}
+                    navigation={navigation}
+                />
+            )
         }
-    }
+    };
 
     state = {
         error: null
