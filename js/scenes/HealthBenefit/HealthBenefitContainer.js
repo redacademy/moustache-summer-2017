@@ -7,48 +7,27 @@ import { ActivityIndicator } from 'react-native';
 import HealthBenefit from './HealthBenefit';
 import CustomHeader from '../../components/Header/';
 
-class HealthBenefitContainer extends Component {
-    static navigationOptions = ({ navigation }) => {
-        return {
-            header: (
-                <CustomHeader
-                    title={'Learn'}
-                    buttons={['Events', 'Ingredients', 'Growers']}
-                    selectedTab={1}
-                    navigation={navigation}
-                />
-            )
-        }
-    };
-    convert = (list) => {
-        if (!list) return [];
-        let newList = [];
-        list.forEach(item => {
-            const key = item.name.trim().substring(0, 1);
-            if (!newList[key]) {
-                console.log('new', item)
-                newList[key] = [item];
-            } else {
-                console.log('add', item)
-                newList[key].push(item);
-            }
-        })
-        console.log('newList', newList)
-        return newList;
-    }
+const HealthBenefitContainer = ({ data: { loading, healthBenefits }, dispatch }) => (
+    (loading)
+        ? <ActivityIndicator />
+        : <HealthBenefit
+            benefitsList={healthBenefits}
+            dispatch={dispatch}
+        />
+);
 
-    render() {
-        const { data: { loading, healthBenefits } } = this.props;
-        const alphaList = this.convert(healthBenefits)
-        if (loading) return <ActivityIndicator />;
-        return (
-            <HealthBenefit
-                benefitsList={this.props.data.healthBenefits}
-                dispatch={this.props.dispatch}
+HealthBenefitContainer.navigationOptions = ({ navigation }) => {
+    return {
+        header: (
+            <CustomHeader
+                title={'Learn'}
+                buttons={['Events', 'Ingredients', 'Growers']}
+                selectedTab={1}
+                navigation={navigation}
             />
         )
     }
-}
+};
 
 HealthBenefitContainer.propTypes = {
     dispatch: PropTypes.func,
