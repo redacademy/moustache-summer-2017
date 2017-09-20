@@ -30,8 +30,8 @@ const FavouriteCard = ({ menuItemData }) => (
                     </View> 
                     <View style={styles.heartWrapper}>
                         <HeartIcon
-                            itemId={'1'}
-                            isFaved={false}
+                            itemId={menuItemData.id}
+                            isFaved={menuItemData.fave}
                             faveButton={{
                                 right: 0,
                                 position: 'relative'

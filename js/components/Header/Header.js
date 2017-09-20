@@ -33,7 +33,7 @@ CustomHeader.propTypes = {
     title: PropTypes.string.isRequired,
     buttons: PropTypes.arrayOf(PropTypes.string).isRequired,
     selectedTab: PropTypes.number.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    dispatch: PropTypes.func,
 }
 
 export default CustomHeader;

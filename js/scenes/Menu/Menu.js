@@ -4,40 +4,48 @@ import { ScrollView, Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { List, ListItem } from 'react-native-elements';
 
+import BreakfastIcon from '../../assets/icons/menu/breakfasticon.png';
+import NutritiousIcom from '../../assets/icons/menu/nutritiousfoodicon.png';
+import BeveragesIcon from '../../assets/icons/menu/beveragesicon.png';
+import JuiceIcon from '../../assets/icons/menu/juicesicon.png';
+import DailyIcon from '../../assets/icons/menu/dailyshotsicon.png';
+import SmoothiesIcon from '../../assets/icons/menu/smoothiesicon.png';
+import KidsIcon from '../../assets/icons/menu/kidsmenuicon.png';
+import RawIcon from '../../assets/icons/menu/rawdesserticon.png';
 import { styles } from './styles'
 
 const list = [
     {
         title: 'Breakfast',
-        icon: require('../../assets/icons/menu/breakfasticon.png')
+        icon: BreakfastIcon
     },
     {
         title: 'Nutritious Food',
-        icon: require('../../assets/icons/menu/nutritiousfoodicon.png')
+        icon: NutritiousIcom
     },
     {
         title: 'Beverages',
-        icon: require('../../assets/icons/menu/beveragesicon.png')
+        icon: BeveragesIcon
     },
     {
         title: 'Juices',
-        icon: require('../../assets/icons/menu/juicesicon.png')
+        icon: JuiceIcon
     },
     {
         title: 'Daily Shots',
-        icon: require('../../assets/icons/menu/dailyshotsicon.png')
+        icon: DailyIcon
     },
     {
         title: 'Smoothies',
-        icon: require('../../assets/icons/menu/smoothiesicon.png')
+        icon: SmoothiesIcon
     },
     {
         title: 'Kids Menu',
-        icon: require('../../assets/icons/menu/kidsmenuicon.png')
+        icon: KidsIcon
     },
     {
         title: 'Raw Dessert',
-        icon: require('../../assets/icons/menu/rawdesserticon.png')
+        icon: RawIcon
     },
 ]
 
