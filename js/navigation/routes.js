@@ -20,7 +20,7 @@ export const homeStack = StackNavigator({
     Featured: { screen: Home },
     MenuCategoryList: { screen: MenuCategoryList },
     Menu: { screen: Menu },
-    // Product: { screen: Product }
+    Product: { screen: Product }
 });
 
 export const learnStack = StackNavigator({
@@ -33,7 +33,6 @@ export const learnStack = StackNavigator({
 
 export const favouritesStack = StackNavigator({
     Favourites: { screen: Favourite },
-    Product: { screen: Product },
 })
 
 const homeIcon = require('../assets/icons/footer/homeicon.png');

@@ -20,7 +20,7 @@ const Featured = ({ navigation, featuredItems, sendMenuItem }) => (
                     >
                         <ProductCard
                             renderArrow
-                            menuItemData={item}
+                            data={item}
                         />
                     </TouchableOpacity>
                 ))
