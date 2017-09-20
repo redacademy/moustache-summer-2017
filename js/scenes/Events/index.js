@@ -1,5 +1,5 @@
-import EventsContainer from './EventsContainer'
-import Events from './Events'
+import EventsContainer from './EventsContainer';
+import Events from './Events';
 
-export { Events }
-export default EventsContainer
+export { Events };
+export default EventsContainer;

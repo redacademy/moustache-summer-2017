@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
+
 import ProductCard from '../../components/ProductCard/';
 import ActionButton from '../../components/ActionButton/';
 import ThreeIconTabs from '../../components/ThreeIconTabs/';
