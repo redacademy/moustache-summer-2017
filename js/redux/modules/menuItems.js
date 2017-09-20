@@ -15,6 +15,12 @@ export function storeMenuItem(item) {
     }
 }
 
+export const triggerStoreMenuItem = (item)  => {
+    return (dispatch) => {
+        dispatch(storeMenuItem(item))
+    }
+}
+
 const initialState = {
     category: '',
     menuItem: {}

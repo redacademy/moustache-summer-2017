@@ -226,6 +226,41 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
+		4719D5C71F6B28BD00843D01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBE2516EBA7D49198229C652 /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = BVLinearGradient;
+		};
+		4719D5C91F6B28BD00843D01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBE2516EBA7D49198229C652 /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 64AA15081EF7F30100718508;
+			remoteInfo = "BVLinearGradient-tvOS";
+		};
+		4719D5D01F6B28BD00843D01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ADD01A681E09402E00F6D226;
+			remoteInfo = "RCTBlob-tvOS";
+		};
+		4719D5E11F6B28BD00843D01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 73DD8E5D466545B7A82A2099 /* RealmReact.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F60690131CA2766F0003FB26;
+			remoteInfo = RealmReact;
+		};
+		4719D5E41F6B28BD00843D01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 766636D5444C428FB8206590 /* RNVectorIcons.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
+			remoteInfo = RNVectorIcons;
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -519,6 +554,31 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4719D5BF1F6B28BD00843D01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4719D5E21F6B28BD00843D01 /* libRealmReact.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4719D5C11F6B28BD00843D01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4719D5E51F6B28BD00843D01 /* libRNVectorIcons.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4719D5C31F6B28BD00843D01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4719D5C81F6B28BD00843D01 /* libBVLinearGradient.a */,
+				4719D5CA1F6B28BD00843D01 /* libBVLinearGradient.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,6 +658,7 @@
 			isa = PBXGroup;
 			children = (
 				ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */,
+<<<<<<< HEAD
 				C87DA47F1F7190DB00DC4243 /* libRCTBlob-tvOS.a */,
 			);
 			name = Products;
@@ -624,6 +685,9 @@
 			children = (
 				C87DA4761F7190DB00DC4243 /* libBVLinearGradient.a */,
 				C87DA4781F7190DB00DC4243 /* libBVLinearGradient.a */,
+=======
+				4719D5D11F6B28BD00843D01 /* libRCTBlob-tvOS.a */,
+>>>>>>> Successfully setup Faves
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -776,7 +840,11 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+<<<<<<< HEAD
 					ProductGroup = C87DA4711F7190DA00DC4243 /* Products */;
+=======
+					ProductGroup = 4719D5C31F6B28BD00843D01 /* Products */;
+>>>>>>> Successfully setup Faves
 					ProjectRef = CBE2516EBA7D49198229C652 /* BVLinearGradient.xcodeproj */;
 				},
 				{
@@ -828,11 +896,11 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = C87DA46F1F7190DA00DC4243 /* Products */;
+					ProductGroup = 4719D5BF1F6B28BD00843D01 /* Products */;
 					ProjectRef = 73DD8E5D466545B7A82A2099 /* RealmReact.xcodeproj */;
 				},
 				{
-					ProductGroup = C87DA46D1F7190DA00DC4243 /* Products */;
+					ProductGroup = 4719D5C11F6B28BD00843D01 /* Products */;
 					ProjectRef = 766636D5444C428FB8206590 /* RNVectorIcons.xcodeproj */;
 				},
 			);
@@ -992,6 +1060,41 @@
 			fileType = archive.ar;
 			path = libjschelpers.a;
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4719D5C81F6B28BD00843D01 /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = 4719D5C71F6B28BD00843D01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4719D5CA1F6B28BD00843D01 /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = 4719D5C91F6B28BD00843D01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4719D5D11F6B28BD00843D01 /* libRCTBlob-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTBlob-tvOS.a";
+			remoteRef = 4719D5D01F6B28BD00843D01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4719D5E21F6B28BD00843D01 /* libRealmReact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRealmReact.a;
+			remoteRef = 4719D5E11F6B28BD00843D01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4719D5E51F6B28BD00843D01 /* libRNVectorIcons.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNVectorIcons.a;
+			remoteRef = 4719D5E41F6B28BD00843D01 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {

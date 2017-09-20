@@ -5,8 +5,8 @@ import {
     View,
     Image
 } from 'react-native';
+import { connect } from 'react-redux';
 import LinearGradientColor from '../LinearGradientColor/';
-//import HeartIconActive from '../HeartIconActive';
 import HeartIcon from '../HeartIcon';
 import Icon from 'react-native-vector-icons/Entypo';
 import { styles } from './styles';
@@ -27,8 +27,8 @@ const ProductCard = ({ renderArrow, heartStyle, data }) => (
                 {
                     (data.__typename === 'MenuItem') && // turn menuItemData to true to test
                     <HeartIcon
-                        itemId={'1'}
-                        isFaved={false}
+                        itemId={data.id}
+                        isFaved={data.fave}
                     />
                 }
                 {
@@ -62,4 +62,4 @@ ProductCard.PropTypes = {
     }),
 }
 
-export default ProductCard;
+export default connect()(ProductCard);
