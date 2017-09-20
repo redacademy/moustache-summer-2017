@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
 		resizeMode: 'contain',
 	},
 	box: {
-		height: 'auto',
+		height: '25%',
 		position: 'absolute',
 		bottom: 0,
 		zIndex: 2,

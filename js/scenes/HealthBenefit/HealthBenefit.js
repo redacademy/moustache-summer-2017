@@ -1,23 +1,48 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { View, Text, TouchableOpacity } from 'react-native'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, TouchableOpacity, ScrollView } from 'react-native';
+import { styles } from './styles';
+import { storeHealthBenefits } from '../../redux/modules/healthBenefits';
 import { withNavigation } from 'react-navigation';
+import { connect } from 'react-redux';
+import ProductCard from '../../components/ProductCard/';
 
-import { styles } from './styles'
+const HealthBenefits = ({ navigation, benefitsList, dispatch }) => {
+    return (
+        <ScrollView>
+            <View style={styles.container}>
+                {
+                    benefitsList.map(item => (
+                        <TouchableOpacity
+                            style={styles.wrapper}
+                            key={item.name}
+                            onPress={() => {
+                                const data = item
+                                dispatch(storeHealthBenefits(data))
+                                return navigation.navigate('Ingredient')
+                            }}
+                        >
+                            <ProductCard
+                                data={item}
+                                ingredientData={item}
+                                renderArrow
+                                numberOfLines={2}
+                                ellipsizeMode={'tail'}
+                            />
+                        </TouchableOpacity>
 
-const HealthBenefits = ({ navigation, benefitsList }) => (
-    <View style={styles.container}>
-        <Text>This is HealthBenefits scene</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Ingredient')}>
-            <Text> Take me to an ingredient </Text>
-        </TouchableOpacity>
-    </View>
-)
+                    )
+                    )}
+            </View>
+        </ScrollView>
+    )
+}
 
 HealthBenefits.propTypes = {
     navigation: PropTypes.shape({
         navigate: PropTypes.func,
     }).isRequired,
+    dispatch: PropTypes.func,
     benefitsList: PropTypes.arrayOf(
         PropTypes.shape({
             __typename: PropTypes.string,
@@ -31,4 +56,4 @@ HealthBenefits.propTypes = {
 
 const HealthBenefitsWithNavigation = withNavigation(HealthBenefits)
 
-export default HealthBenefitsWithNavigation;
+export default connect()(HealthBenefitsWithNavigation);

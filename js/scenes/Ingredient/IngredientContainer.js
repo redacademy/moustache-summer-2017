@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import { connect } from 'react-redux';
 import Ingredient from './Ingredient';
-import CustomHeader from '../../components/Header/';
 import { colors } from '../../config/styles';
 
 class IngredientContainer extends Component {
-    
-    static navigationOptions = ({ navigation, screenProps }) => {
-        return {
-            header: (
-                <CustomHeader
-                    title={'Learn'}
-                    buttons={['Events', 'Ingredients', 'Growers']}
-                    backButton={true}
-                    navigation={navigation}
-                />
-            )
-        }
-    }
+    static navigationOptions = {
+        title: 'Learn',
+        headerTintColor: 'white',
+        headerStyle: { backgroundColor: colors.lightGreen },
+    };
 
     render() {
         return (
-            <Ingredient />
+            <Ingredient data={this.props.healthBenefit} />
         )
     }
 }
 
-IngredientContainer.propTypes = {
-
+function mapStateToProps(state) {
+    return {
+        healthBenefit: state.healthBenefit.healthBenefit
+    };
 }
 
-export default IngredientContainer;
+IngredientContainer.propTypes = {
+    healthBenefit: PropTypes.shape({
+        __typename: PropTypes.string,
+        details: PropTypes.string,
+        healthBenefits: PropTypes.string,
+        name: PropTypes.string,
+        whereInMenu: PropTypes.string,
+        id: PropTypes.string,
+        imageLink: PropTypes.string,
+    })
+}
+
+export default connect(mapStateToProps)(IngredientContainer);

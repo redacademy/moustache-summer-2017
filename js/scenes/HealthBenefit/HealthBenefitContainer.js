@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ActivityIndicator } from 'react-native';
-
 import HealthBenefit from './HealthBenefit';
 import CustomHeader from '../../components/Header/';
 
 class HealthBenefitContainer extends Component {
-
     static navigationOptions = ({ navigation }) => {
         return {
             header: (
@@ -26,8 +24,8 @@ class HealthBenefitContainer extends Component {
         if (!list) return [];
         let newList = [];
         list.forEach(item => {
-            const key = item.name.trim().substring(0,1);
-            if (!newList[key])  {
+            const key = item.name.trim().substring(0, 1);
+            if (!newList[key]) {
                 console.log('new', item)
                 newList[key] = [item];
             } else {
@@ -45,13 +43,15 @@ class HealthBenefitContainer extends Component {
         if (loading) return <ActivityIndicator />;
         return (
             <HealthBenefit
-                benefitsList={healthBenefits}
+                benefitsList={this.props.data.healthBenefits}
+                dispatch={this.props.dispatch}
             />
         )
     }
 }
 
 HealthBenefitContainer.propTypes = {
+    dispatch: PropTypes.func,
     data: PropTypes.shape({
         loading: PropTypes.bool.isRequired,
         healthBenefits: PropTypes.arrayOf(
@@ -60,28 +60,26 @@ HealthBenefitContainer.propTypes = {
                 details: PropTypes.string,
                 healthBenefits: PropTypes.string,
                 name: PropTypes.string,
-                whereInMenu: PropTypes.string
+                whereInMenu: PropTypes.string,
+                id: PropTypes.string,
+                imageLink: PropTypes.string,
             })
         )
-    }) 
-}
-
-function mapStateToProps(state) {
-    return {
-        // ADD REDUX STATE HERE
-    }
-}
+    })
+};
 
 const fetchHealthBenefits = gql`
     query fetchHealthBenefits {
         healthBenefits {
+            id
             name
             details
             healthBenefits
             whereInMenu
+            imageLink
         }
     }
 `
 
 const healthBenefitsList = graphql(fetchHealthBenefits)(HealthBenefitContainer);
-export default connect(mapStateToProps)(healthBenefitsList);
+export default connect()(healthBenefitsList);
