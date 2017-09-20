@@ -6,12 +6,14 @@ import {
     Image
 } from 'react-native';
 import { connect } from 'react-redux';
+
 import LinearGradientColor from '../LinearGradientColor/';
 import HeartIcon from '../HeartIcon';
 import Icon from 'react-native-vector-icons/Entypo';
 import { styles } from './styles';
 
 const ProductCard = ({ renderArrow, heartStyle, data }) => (
+
     <View style={styles.container}>
         <View style={styles.wrapper}>
             <Image style={styles.image} source={{ uri: data.imageLink }} />
@@ -29,6 +31,7 @@ const ProductCard = ({ renderArrow, heartStyle, data }) => (
                     <HeartIcon
                         itemId={data.id}
                         isFaved={data.fave}
+                        style={heartStyle}
                     />
                 }
                 {
@@ -40,9 +43,9 @@ const ProductCard = ({ renderArrow, heartStyle, data }) => (
     </View>
 );
 
-ProductCard.PropTypes = {
+ProductCard.propTypes = {
     renderArrow: PropTypes.bool,
-    heartStyle: PropTypes.object,
+    heartStyle: PropTypes.number,
     data: PropTypes.shape({
         name: PropTypes.string,
         date: PropTypes.string,

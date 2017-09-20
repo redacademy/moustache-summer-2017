@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { StackNavigator, TabNavigator } from "react-navigation";
-import { Image, StyleSheet, Icon } from 'react-native';
+import { Image } from 'react-native';
 
 import { colors } from '../config/styles';
 

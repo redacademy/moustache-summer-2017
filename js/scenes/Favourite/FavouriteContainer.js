@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { addNavigationHelpers } from 'react-navigation';
-import Favourite from './Favourite';
-import { storeMenuItem } from '../../redux/modules/menuItems';
-import { colors } from '../../config/styles';
-
-import { triggerStoreMenuItem } from '../../redux/modules/menuItems';
 import { ActivityIndicator } from 'react-native';
+
+import Favourite from './Favourite';
+import { colors } from '../../config/styles';
+import { triggerStoreMenuItem } from '../../redux/modules/menuItems';
 import { favesQuery } from '../../redux/modules/user';
 
 class FavouriteContainer extends Component {
@@ -101,7 +100,15 @@ FavouriteContainer.propTypes = {
     ),
     dispatch: PropTypes.func,
     favesQuery: PropTypes.func.isRequired,
-    navigationState: PropTypes.func,
+    navigationState: PropTypes.shape({
+        index: PropTypes.number,
+        routes: PropTypes.arrayOf(
+            PropTypes.shape({
+                key: PropTypes.string,
+                routeName: PropTypes.string,
+            }),
+        ),
+    }).isRequired,
     triggerStoreMenuItem: PropTypes.func,
 }
 

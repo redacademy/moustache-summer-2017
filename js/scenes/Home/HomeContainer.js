@@ -47,7 +47,6 @@ class HomeContainer extends Component {
 
     render() {
 
-        const selected = this.props.selectedTab;
         const { data: { loading, featuredItems }, navigationState, dispatch } = this.props;
         const itemsWithFaves = this.addFaves(featuredItems)
 
@@ -68,7 +67,6 @@ class HomeContainer extends Component {
 }
 
 HomeContainer.propTypes = {
-    selectedTab: PropTypes.number.isRequired,
     navigationState: PropTypes.shape({
         index: PropTypes.number,
         routes: PropTypes.arrayOf(PropTypes.shape({

@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
 
 import Product from './Product';
 import CustomHeader from '../../components/Header/';
-import { colors } from '../../config/styles';
 
 class ProductContainer extends Component {
 
-    static navigationOptions = ({ navigation, screenProps }) => {
+    static navigationOptions = ({ navigation }) => {
         return {
             header: (
                 <CustomHeader
@@ -38,7 +36,7 @@ ProductContainer.propTypes = {
     item: PropTypes.shape({
         __typename: PropTypes.string,
         category: PropTypes.string,
-        name: PropTypes.string,
+    name: PropTypes.string,
         ingredients: PropTypes.string,
         price: PropTypes.string,
         similarItems: PropTypes.string,
@@ -46,4 +44,4 @@ ProductContainer.propTypes = {
     })
 }
 
-export default connect(mapStateToProps)(ProductContainer)
+export default connect(mapStateToProps)(ProductContainer);

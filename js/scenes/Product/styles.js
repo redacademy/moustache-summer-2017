@@ -12,5 +12,5 @@ export const styles = StyleSheet.create({
     },
     heartstyle: {
         right: 15,
-    }
+    },
 })
