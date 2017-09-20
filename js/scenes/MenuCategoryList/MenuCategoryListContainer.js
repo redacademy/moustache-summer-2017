@@ -5,7 +5,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import MenuCategoryList from './MenuCategoryList';
 import CustomHeader from '../../components/Header/';
-import { storeMenuItem } from '../../redux/modules/menuItems';
+import { triggerStoreMenuItem } from '../../redux/modules/menuItems';
 import { ActivityIndicator } from 'react-native';
 import { favesQuery } from '../../redux/modules/user';
 
@@ -42,7 +42,8 @@ class MenuCategoryListContainer extends Component {
     }
 
     sendMenuItem = (item) => {
-        return this.props.dispatch(storeMenuItem(item));
+        const { triggerStoreMenuItem } = this.props
+        this.props.dispatch(triggerStoreMenuItem(item));
     }
 
     render() {
@@ -105,8 +106,9 @@ MenuCategoryListContainer.propTypes = {
     ),
     menuCategory: PropTypes.string,
     dispatch: PropTypes.func,
-    favesQuery: PropTypes.func.isRequired
+    favesQuery: PropTypes.func.isRequired,
+    triggerStoreMenuItem: PropTypes.func.isRequired,
 }
 
 const MenuCategoryWithData = graphql(fetchMenuItems)(MenuCategoryListContainer)
-export default connect(mapStateToProps, { favesQuery })(MenuCategoryWithData);
+export default connect(mapStateToProps, { favesQuery, triggerStoreMenuItem })(MenuCategoryWithData);
