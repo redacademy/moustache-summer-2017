@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { addNavigationHelpers } from 'react-navigation';
-import { ActivityIndicator } from 'react-native';
-
-import { storeMenuItem } from '../../redux/modules/menuItems';
 import Featured from '../../components/Featured/';
-import Menu from '../Menu/';
 import CustomHeader from '../../components/Header/';
-import { homeTab } from '../../redux/modules/SegmentedComps';
+
+import { triggerStoreMenuItem } from '../../redux/modules/menuItems';
+import { ActivityIndicator } from 'react-native';
 import { favesQuery, getUserTimestamp } from '../../redux/modules/user';
 
 class HomeContainer extends Component {
@@ -42,7 +40,8 @@ class HomeContainer extends Component {
     }
 
     sendMenuItem = (item) => {
-        return this.props.dispatch(storeMenuItem(item))
+        const { triggerStoreMenuItem } = this.props
+        triggerStoreMenuItem(item)
     }
 
     render() {
@@ -97,7 +96,8 @@ HomeContainer.propTypes = {
         })
     ),
     favesQuery: PropTypes.func.isRequired,
-    getUserTimestamp: PropTypes.func.isRequired
+    getUserTimestamp: PropTypes.func.isRequired,
+    triggerStoreMenuItem: PropTypes.func
 }
 
 const fetchFeaturedItems = gql`
@@ -118,9 +118,8 @@ const fetchFeaturedItems = gql`
 const featuredItems = graphql(fetchFeaturedItems)(HomeContainer);
 
 const homeContainerState = connect((state) => ({
-    selectedTab: state.segment.tabChoice,
     navigationState: state.home,
     faves: state.user.faves
-}), { favesQuery, getUserTimestamp })(featuredItems);
+}), { favesQuery, triggerStoreMenuItem, getUserTimestamp })(featuredItems);
 
 export default homeContainerState;

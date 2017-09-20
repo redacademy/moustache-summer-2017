@@ -5,6 +5,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import MenuCategoryList from './MenuCategoryList';
 import CustomHeader from '../../components/Header/';
+
 import { triggerStoreMenuItem } from '../../redux/modules/menuItems';
 import { ActivityIndicator } from 'react-native';
 import { favesQuery } from '../../redux/modules/user';
@@ -43,7 +44,7 @@ class MenuCategoryListContainer extends Component {
 
     sendMenuItem = (item) => {
         const { triggerStoreMenuItem } = this.props
-        this.props.dispatch(triggerStoreMenuItem(item));
+        triggerStoreMenuItem(item);
     }
 
     render() {

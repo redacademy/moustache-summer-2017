@@ -18,7 +18,7 @@ class HeartIconContainer extends Component {
         return (
             <HeartIcon
                 itemId={this.props.itemId}
-                isFaved={this.state.isFaved}
+                isFaved={this.props.isFaved}
                 handleFavePress={this.handleFavePress}
                 faveButton={faveButton}
                 faveHeart={faveHeart}
