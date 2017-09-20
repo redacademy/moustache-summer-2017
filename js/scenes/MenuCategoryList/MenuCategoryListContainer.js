@@ -12,7 +12,7 @@ import { favesQuery } from '../../redux/modules/user';
 
 class MenuCategoryListContainer extends Component {
 
-    static navigationOptions = ({ navigation, screenProps }) => {
+    static navigationOptions = ({ navigation }) => {
         return {
             header: (
                 <CustomHeader
@@ -26,14 +26,14 @@ class MenuCategoryListContainer extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const { favesQuery } = this.props
         favesQuery()
     }
 
     addFaves = (list) => {
-        if (!list) return []
-        const faveList = this.props.faves
+        if (!list) return [];
+        const faveList = this.props.faves;
         const newList = list.map(item => ({ ...item, fave: !!faveList.find(it => it.id == item.id)}));
         return newList;
     }
@@ -43,7 +43,7 @@ class MenuCategoryListContainer extends Component {
     }
 
     sendMenuItem = (item) => {
-        const { triggerStoreMenuItem } = this.props
+        const { triggerStoreMenuItem } = this.props;
         triggerStoreMenuItem(item);
     }
 
@@ -111,5 +111,5 @@ MenuCategoryListContainer.propTypes = {
     triggerStoreMenuItem: PropTypes.func.isRequired,
 }
 
-const MenuCategoryWithData = graphql(fetchMenuItems)(MenuCategoryListContainer)
+const MenuCategoryWithData = graphql(fetchMenuItems)(MenuCategoryListContainer);
 export default connect(mapStateToProps, { favesQuery, triggerStoreMenuItem })(MenuCategoryWithData);

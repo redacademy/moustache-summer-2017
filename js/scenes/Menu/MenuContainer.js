@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers } from 'react-navigation';
-
 import { storeCategory } from '../../redux/modules/menuItems';
 import Menu from './Menu';
 import CustomHeader from '../../components/Header/';    
@@ -60,4 +59,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(MenuContainer)
+export default connect(mapStateToProps)(MenuContainer);

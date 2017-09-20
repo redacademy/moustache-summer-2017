@@ -1,5 +1,5 @@
-import MenuCategoryListContainer from './MenuCategoryListContainer'
-import MenuCategoryList from './MenuCategoryList'
+import MenuCategoryListContainer from './MenuCategoryListContainer';
+import MenuCategoryList from './MenuCategoryList';
 
-export { MenuCategoryList }
-export default MenuCategoryListContainer
+export { MenuCategoryList };
+export default MenuCategoryListContainer;
