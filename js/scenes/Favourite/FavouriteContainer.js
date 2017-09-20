@@ -20,7 +20,7 @@ class FavouriteContainer extends Component {
         headerStyle: { backgroundColor: colors.lightGreen },
     };
 
-    componentWillMount() {
+    componentDidMount() {
         const { favesQuery } = this.props
         favesQuery()
     }
