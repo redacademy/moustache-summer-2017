@@ -22,10 +22,6 @@ class EventsContainer extends Component {
         }
     };
 
-    componentDidMount() {
-        // ADD DISPATCH FUNCTION HERE TO FETCH DATA
-    }
-
     render() {
         const { data: { loading, events } } = this.props;
 
@@ -54,13 +50,10 @@ EventsContainer.propTypes = {
                 details: PropTypes.string
             })
         )
+    }).isRequired,
+    navigation: PropTypes.shape({
+        dispatch: PropTypes.func,
     })
-}
-
-function mapStateToProps(state) {
-    return {
-        // ADD REDUX STATE HERE
-    }
 }
 
 const fetchEvents = gql`
@@ -79,4 +72,4 @@ const fetchEvents = gql`
 `
 
 const eventsList = graphql(fetchEvents)(EventsContainer);
-export default connect(mapStateToProps)(eventsList);
+export default connect()(eventsList);

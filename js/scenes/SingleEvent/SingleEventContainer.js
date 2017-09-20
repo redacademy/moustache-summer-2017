@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Linking } from 'react-native';
+
 import SingleEvent from './SingleEvent';
 import CustomHeader from '../../components/Header/';
-import { Linking } from 'react-native';
 
 class SingleEventContainer extends Component {
 
@@ -12,7 +13,7 @@ class SingleEventContainer extends Component {
                 <CustomHeader
                     title={'Learn'}
                     buttons={['Events', 'Ingredients', 'Growers']}
-                    selectedTab={1}
+                    selectedTab={0}
                     navigation={navigation}
                     backButton={true}
                 />
@@ -63,4 +64,3 @@ SingleEventContainer.propTypes = {
 };
 
 export default SingleEventContainer;
-

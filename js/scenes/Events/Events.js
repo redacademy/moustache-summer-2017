@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, TouchableOpacity, ScrollView } from 'react-native';
 import { withNavigation } from 'react-navigation';
+
 import ProductCard from '../../components/ProductCard/';
 import { styles } from './styles'
 
@@ -10,7 +11,10 @@ const Events = ({ navigation, eventsList }) => (
         <View style={styles.container}>
             {
                 eventsList.map(event => (
-                    <TouchableOpacity key={event.name} onPress={() => navigation.navigate('SingleEvent', event)}>
+                    <TouchableOpacity
+                        key={event.name}
+                        onPress={() => navigation.navigate('SingleEvent', event)}
+                    >
                         <ProductCard
                             data={event}
                             renderArrow
@@ -39,9 +43,8 @@ Events.propTypes = {
             eventLink: PropTypes.string,
             details: PropTypes.string
         })
-    )
+    ).isRequired,
 }
 
-const EventsWithNavigation = withNavigation(Events)
-
+const EventsWithNavigation = withNavigation(Events);
 export default EventsWithNavigation;
