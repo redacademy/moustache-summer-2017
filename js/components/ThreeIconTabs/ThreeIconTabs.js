@@ -61,11 +61,11 @@ class ThreeIconTabs extends Component {
                 return {
                     _getIcon: ({ route }) => <Image style={styles.image} source={route.eventIcon} />,
                     _getLabel: ({ route }) => route.event,
-                    _getRoute1: () => <RouterContent> {this.props.data.date} </RouterContent>,
-                    _getRoute2: () => <RouterContent> {this.props.data.location} </RouterContent>,
-                    _getRoute3: () => <RouterContent> {this.props.data.details} </RouterContent>,
+                    _getRoute1: () => <RouterContent>{this.props.data.date}</RouterContent>,
+                    _getRoute2: () => <RouterContent>{this.props.data.location}</RouterContent>,
+                    _getRoute3: () => <RouterContent>{this.props.data.details}</RouterContent>,
                 }
-            case "health":
+            case "healthbenefit":
                 return {
                     _getIcon: ({ route }) => <Image style={styles.image} source={route.healthIcon} />,
                     _getLabel: ({ route }) => route.health,
@@ -78,7 +78,7 @@ class ThreeIconTabs extends Component {
                     _getIcon: ({ route }) => <Image style={styles.image} source={route.menuIcon} />,
                     _getLabel: ({ route }) => route.menu,
                     _getRoute1: () => <RouterContent>{this.props.data.ingredients}</RouterContent>,
-                    _getRoute2: () => <RouterContent> {this.props.data.healthBenefits}</RouterContent>,
+                    _getRoute2: () => <RouterContent>{this.props.data.healthBenefits}</RouterContent>,
                     _getRoute3: () => <RouterContent>{this.props.data.similarItems}</RouterContent>,
                 }
             default:
@@ -146,7 +146,7 @@ ThreeIconTabs.propTypes = {
     }),
 }
 RouterContent.propTypes = {
-    children: PropTypes.arrayOf(PropTypes.string)
+    children: PropTypes.string
 }
 
 

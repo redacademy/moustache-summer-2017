@@ -1,18 +1,39 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { View, Text, TouchableOpacity } from 'react-native'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, TouchableOpacity, ScrollView } from 'react-native';
+import { styles } from './styles';
 import { withNavigation } from 'react-navigation';
+import { connect } from 'react-redux';
+import ProductCard from '../../components/ProductCard/';
 
-import { styles } from './styles'
+const HealthBenefits = ({ navigation, benefitsList }) => {
+    return (
+        <ScrollView>
+            <View style={styles.container}>
+                {
+                    benefitsList.map(item => (
+                        <TouchableOpacity
+                            style={styles.wrapper}
+                            key={item.name}
+                            onPress={() => {
+                                return navigation.navigate('Ingredient', { healthBenefit: item })
+                            }}
+                        >
+                            <ProductCard
+                                data={item}
+                                ingredientData={item}
+                                renderArrow
+                                numberOfLines={2}
+                                ellipsizeMode={'tail'}
+                            />
+                        </TouchableOpacity>
 
-const HealthBenefits = ({ navigation, benefitsList }) => (
-    <View style={styles.container}>
-        <Text>This is HealthBenefits scene</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Ingredient')}>
-            <Text> Take me to an ingredient </Text>
-        </TouchableOpacity>
-    </View>
-)
+                    )
+                    )}
+            </View>
+        </ScrollView>
+    )
+}
 
 HealthBenefits.propTypes = {
     navigation: PropTypes.shape({
@@ -31,4 +52,4 @@ HealthBenefits.propTypes = {
 
 const HealthBenefitsWithNavigation = withNavigation(HealthBenefits)
 
-export default HealthBenefitsWithNavigation;
+export default connect()(HealthBenefitsWithNavigation);
