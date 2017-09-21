@@ -15,6 +15,7 @@ class HomeContainer extends Component {
 
     static navigationOptions = ({ navigation }) => {
         return {
+            statusBarStyle: 'light-content',
             header: (
                 <CustomHeader
                     title={'Home'}
