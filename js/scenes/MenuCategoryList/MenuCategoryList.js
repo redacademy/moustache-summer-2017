@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, View, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import ProductCard from '../../components/ProductCard/';
 
+import ProductCard from '../../components/ProductCard/';
 import { styles } from './styles'
 
 const MenuCategoryList = ({ navigation, menuItemsList, sendMenuItem }) => (
@@ -27,7 +27,7 @@ const MenuCategoryList = ({ navigation, menuItemsList, sendMenuItem }) => (
             }
         </View>
     </ScrollView>
-)
+);
 
 MenuCategoryList.propTypes = {
     navigation: PropTypes.shape({
