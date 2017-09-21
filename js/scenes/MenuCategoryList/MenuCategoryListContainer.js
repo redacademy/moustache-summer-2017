@@ -26,7 +26,7 @@ class MenuCategoryListContainer extends Component {
         }
     }
 
-    componentWillMount = () => {
+    componentDidMount = () => {
         const { favesQuery } = this.props;
         favesQuery();
     }
