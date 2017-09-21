@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ActivityIndicator } from 'react-native';
+
 import HealthBenefit from './HealthBenefit';
 import CustomHeader from '../../components/Header/';
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TouchableOpacity, ScrollView } from 'react-native';
-import { styles } from './styles';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
+
 import ProductCard from '../../components/ProductCard/';
+import { styles } from './styles';
 
 const HealthBenefits = ({ navigation, benefitsList }) => {
     return (
@@ -13,8 +14,7 @@ const HealthBenefits = ({ navigation, benefitsList }) => {
                 {
                     benefitsList.map(item => (
                         <TouchableOpacity
-                            style={styles.wrapper}
-                            key={item.name}
+                            key={item.id}
                             onPress={() => {
                                 return navigation.navigate('Ingredient', { healthBenefit: item })
                             }}
@@ -27,12 +27,11 @@ const HealthBenefits = ({ navigation, benefitsList }) => {
                                 ellipsizeMode={'tail'}
                             />
                         </TouchableOpacity>
-
-                    )
-                    )}
+                    ))
+                }
             </View>
         </ScrollView>
-    )
+    );
 }
 
 HealthBenefits.propTypes = {
@@ -51,5 +50,4 @@ HealthBenefits.propTypes = {
 }
 
 const HealthBenefitsWithNavigation = withNavigation(HealthBenefits)
-
 export default connect()(HealthBenefitsWithNavigation);
