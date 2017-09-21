@@ -27,12 +27,11 @@ const HealthBenefits = ({ navigation, benefitsList }) => {
                                 ellipsizeMode={'tail'}
                             />
                         </TouchableOpacity>
-
                     ))
                 }
             </View>
         </ScrollView>
-    )
+    );
 }
 
 HealthBenefits.propTypes = {
