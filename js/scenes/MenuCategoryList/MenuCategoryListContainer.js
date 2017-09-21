@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import { ActivityIndicator } from 'react-native';
+
 import MenuCategoryList from './MenuCategoryList';
 import CustomHeader from '../../components/Header/';
-
 import { triggerStoreMenuItem } from '../../redux/modules/menuItems';
-import { ActivityIndicator } from 'react-native';
 import { favesQuery } from '../../redux/modules/user';
 
 class MenuCategoryListContainer extends Component {
@@ -26,14 +26,14 @@ class MenuCategoryListContainer extends Component {
         }
     }
 
-    componentWillMount() {
-        const { favesQuery } = this.props
-        favesQuery()
+    componentWillMount = () => {
+        const { favesQuery } = this.props;
+        favesQuery();
     }
 
     addFaves = (list) => {
-        if (!list) return []
-        const faveList = this.props.faves
+        if (!list) return [];
+        const faveList = this.props.faves;
         const newList = list.map(item => ({ ...item, fave: !!faveList.find(it => it.id == item.id)}));
         return newList;
     }
@@ -43,14 +43,14 @@ class MenuCategoryListContainer extends Component {
     }
 
     sendMenuItem = (item) => {
-        const { triggerStoreMenuItem } = this.props
+        const { triggerStoreMenuItem } = this.props;
         triggerStoreMenuItem(item);
     }
 
     render() {
         const { data: { loading, menuItems } } = this.props;
         const category = this.props.menuCategory;
-        const itemsWithFaves = this.addFaves(menuItems)
+        const itemsWithFaves = this.addFaves(menuItems);
 
         if (loading) return <ActivityIndicator />;
         return (
@@ -58,7 +58,7 @@ class MenuCategoryListContainer extends Component {
                 menuItemsList={this.filterMenuItems(itemsWithFaves, category)}
                 sendMenuItem={this.sendMenuItem}
             />
-        )
+        );
     }
 }
 
@@ -108,7 +108,7 @@ MenuCategoryListContainer.propTypes = {
     menuCategory: PropTypes.string,
     dispatch: PropTypes.func,
     favesQuery: PropTypes.func.isRequired,
-    triggerStoreMenuItem: PropTypes.func.isRequired,
+    triggerStoreMenuItem: PropTypes.func.isRequired
 }
 
 const MenuCategoryWithData = graphql(fetchMenuItems)(MenuCategoryListContainer)

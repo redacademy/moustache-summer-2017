@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import ProductCard from '../ProductCard/';
 
+import ProductCard from '../ProductCard/';
 import { styles } from './styles';
 
 const Featured = ({ navigation, featuredItems, sendMenuItem }) => (
@@ -47,5 +47,4 @@ Featured.propTypes = {
 };
 
 const FeaturedWithNavigation = withNavigation(Featured);
-
 export default FeaturedWithNavigation;

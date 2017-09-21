@@ -1,3 +1,3 @@
-import Featured from './Featured'
+import Featured from './Featured';
 
 export default Featured;
