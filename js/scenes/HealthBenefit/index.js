@@ -1,5 +1,5 @@
-import HealthBenefitContainer from './HealthBenefitContainer'
-import HealthBenefit from './HealthBenefit'
+import HealthBenefitContainer from './HealthBenefitContainer';
+import HealthBenefit from './HealthBenefit';
 
-export { HealthBenefit }
-export default HealthBenefitContainer
+export { HealthBenefit };
+export default HealthBenefitContainer;

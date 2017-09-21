@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Ingredient from './Ingredient';
 import { colors } from '../../config/styles';
 
 const IngredientContainer = ({ navigation }) => {
     return (
         <Ingredient data={navigation.state.params.healthBenefit} />
-    )
+    );
 }
 
 IngredientContainer.navigationOptions = {
     title: 'Learn',
     headerTintColor: 'white',
-    headerStyle: { backgroundColor: colors.lightGreen },
-
+    headerStyle: { backgroundColor: colors.lightGreen }
 };
 
 IngredientContainer.propTypes = {

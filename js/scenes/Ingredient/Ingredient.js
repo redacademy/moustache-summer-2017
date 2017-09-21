@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
+import { View, ScrollView } from 'react-native';
+
 import ProductCard from '../../components/ProductCard/';
 import ThreeIconTabs from '../../components/ThreeIconTabs/';
-
 import { styles } from './styles';
 
 const Ingredient = ({ data }) => (
@@ -13,7 +13,7 @@ const Ingredient = ({ data }) => (
             <ThreeIconTabs data={data} />
         </View>
     </ScrollView>
-)
+);
 
 Ingredient.propTypes = {
     data: PropTypes.shape({
