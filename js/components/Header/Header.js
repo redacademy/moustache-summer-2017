@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, SegmentedControlIOS, TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -34,6 +33,11 @@ CustomHeader.propTypes = {
     buttons: PropTypes.arrayOf(PropTypes.string).isRequired,
     selectedTab: PropTypes.number.isRequired,
     dispatch: PropTypes.func,
+    backButton: PropTypes.bool,
+    navigation: PropTypes.shape({
+        dispatch: PropTypes.func,
+        navigate: PropTypes.func
+    }).isRequired
 }
 
 export default CustomHeader;
