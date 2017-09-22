@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Ingredient from './Ingredient';
+import CustomHeader from '../../components/Header/';
 import { colors } from '../../config/styles';
 
 const IngredientContainer = ({ navigation }) => {
@@ -10,11 +11,20 @@ const IngredientContainer = ({ navigation }) => {
     );
 }
 
-IngredientContainer.navigationOptions = {
-    title: 'Learn',
-    headerTintColor: 'white',
-    headerStyle: { backgroundColor: colors.lightGreen }
+IngredientContainer.navigationOptions = ({ navigation }) => {
+    return {
+        header: (
+            <CustomHeader
+                title={'Learn'}
+                buttons={['Events', 'Ingredients', 'Growers']}
+                selectedTab={0}
+                navigation={navigation}
+                backButton={true}
+            />
+        )
+    }
 };
+
 
 IngredientContainer.propTypes = {
     navigation: PropTypes.shape({
